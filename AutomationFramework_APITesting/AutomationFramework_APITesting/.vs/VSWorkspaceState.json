@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\APICore",
+    "\\DriverCore",
+    "\\NUnitTestSetup"
+  ],
+  "SelectedNode": "\\DriverCore\\WebDriverAction.cs",
+  "PreviewInSolutionExplorer": false
+}
