@@ -95,7 +95,40 @@ namespace CoreFramework.APICore
 
         /*-------SEND REQUEST------*/
 
+        public APIResponse Get()
+        {
+            request.Method = "GET";
+            APIResponse response = SendRequest();
+            return response;
+        }
 
+        public APIResponse Post()
+        {
+            request.Method = "POST";
+            APIResponse response = SendRequest();
+            return response;
+        }
+
+        public APIResponse Put()
+        {
+            request.Method = "PUT";
+            APIResponse response = SendRequest();
+            return response;
+        }
+
+        public APIResponse Head()
+        {
+            request.Method = "HEAD";
+            APIResponse response = SendRequest();
+            return response;
+        }
+
+        public APIResponse Delete()
+        {
+            request.Method = "DELETE";
+            APIResponse response = SendRequest();
+            return response;
+        }
         public APIResponse SendRequest()
         {
             if (request.Method == "GET")

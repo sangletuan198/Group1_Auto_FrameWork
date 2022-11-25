@@ -32,7 +32,7 @@ namespace CoreFramework.NUnitTestSetup
             HtmlReport.createNode(TestContext.CurrentContext.Test.ClassName, TestContext.CurrentContext.Test.Name);
             WebDriverManager_.InitDriver("chrome", 1920, 1080);
             _driver = WebDriverManager_.GetCurrentDriver();
-            //driverBaseAction = new WebDriverAction(_driver);
+            driverBaseAction = new WebDriverAction(_driver);
         }
 
         [TearDown]
