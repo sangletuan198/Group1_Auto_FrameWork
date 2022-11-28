@@ -10092,11 +10092,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj",
+      "projectUniqueName": "c:\\Users\\sang\\Desktop\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj",
       "projectName": "CoreFramework",
-      "projectPath": "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj",
+      "projectPath": "c:\\Users\\sang\\Desktop\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj",
       "packagesPath": "C:\\Users\\sang\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\CoreFramework\\obj\\",
+      "outputPath": "c:\\Users\\sang\\Desktop\\Group1_Auto_FrameWork\\CoreFramework\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\sang\\AppData\\Roaming\\NuGet\\NuGet.Config",

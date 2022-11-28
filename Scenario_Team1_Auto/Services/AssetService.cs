@@ -13,22 +13,30 @@ namespace Scenario_Team1_Auto.Services
 {
     public class AssetService
     {
-        private string getAssetPath = "/api/v1/assets?locationId=&searchTerm=&cateFill=&stateFill=&pageSize=10&pageNo=1&sortBy=assetId&sortDir=asc";
+        private string getAssetPath = "/api/v1/admin/assets?searchTerm=&cateFill=&stateFill=&pageSize=10&pageNo=1&sortBy=assetId&sortDir=asc";
+                                     ///api/v1/admin/assets?searchTerm=&cateFill=&stateFill=&pageSize=10&pageNo=1&sortBy=assetId&sortDir=asc
+                                    //api/v1/admin/assets?searchTerm=&cateFill=&stateFill=&pageSize=10&pageNo=1&sortBy=assetId&sortDir=asc
         public APIResponse GetAssetRequest(string token)
         {
             APIResponse response = new APIRequest()
                 .SetUrl(Constant.NASH_HOST + getAssetPath)
-                .AddHeader("Authorization", "Bearer" + token)
+                .AddHeader("Authorization", "Bearer " + token)
                 .Get();
             return response;
         }
-        public AssetsDAO GetAssets(string token)
+        public AssetsDAO? GetAssets(string token)
         {
-            APIResponse response = GetAssetRequest(token);
-            Assert.True(response.responseStatusCode.Equals("200"));
-            var jsonResponse = response.responseBody;
-            AssetsDAO assets = (AssetsDAO)JsonConvert.DeserializeObject<AssetsDAO>(jsonResponse);
-            return assets;
+            APIResponse response;
+            try {
+                response = GetAssetRequest(token);
+                Assert.True(response.responseStatusCode.Equals("OK"));
+                var jsonResponse = response.responseBody;
+                AssetsDAO? assets = (AssetsDAO?) JsonConvert.DeserializeObject<AssetsDAO>(jsonResponse);
+                return assets;
+            } catch (Exception ex) { 
+                TestContext.WriteLine(ex);
+            }
+            return null;
         }
     }
 }
