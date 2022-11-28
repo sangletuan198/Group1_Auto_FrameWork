@@ -1,6 +1,7 @@
 ﻿using CoreFramework.DriverCore;
 using OpenQA.Selenium;
 using OpenQA.Selenium.DevTools.V105.Network;
+using Scenario_Team1_Auto.TestSetup;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,22 +15,18 @@ namespace Scenario_Team1_Auto.PageObject
         public LoginPage(IWebDriver driver) : base(driver)
         { 
         }
-             
+        //tuandv la staff
+        //vangdv la admin
+
         private readonly String tfUserName = "//*[@id='login_username']"; 
         private readonly String tfPassWord = "//*[@id='login_password']";
         private readonly String btnLogin = "//button[@type='submit']";
 
-
-
-
-
-
-        public void SendKeyLogin()
+        public void Login(string username, string password)
         {
-
             IsElementEnable(btnLogin);
-            SendKeys_(tfUserName, "vangdv");
-            SendKeys_(tfPassWord, "vangdv@01011990");
+            SendKeys_(tfUserName,Constant.Admin_UserName);
+            SendKeys_(tfPassWord,Constant.Admin_Password);
             IsElementEnable(btnLogin);
             Clicks(btnLogin);
         }

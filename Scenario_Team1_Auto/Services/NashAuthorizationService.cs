@@ -14,7 +14,7 @@ namespace Scenario_Team1_Auto.Services
     public class NashAuthorizationService
     {
         private string loginPath = "/api/v1/auth/login";
-        // public static string NASH_HOST = "http://13.212.23.86";
+       
         public APIResponse LoginRequest(string username, string password)
         {
            string body = "{\"username\":\"" + username + "\",\"password\":\"" + password + "\"}";

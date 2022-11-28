@@ -17,5 +17,13 @@ namespace Scenario_Team1_Auto.TestSetup
         public static string NASH_HOST = "http://13.212.23.86";
         public static string NASH_USERNAME = "vangdv";
         public static string NASH_PASSWORD = "vangdv@01011990";
+
+        public static string Staff_UserName = "quynhct";
+        public static string Staff_Password = "quynhct@01011990";
+
+        public static string Admin_UserName = "vangdv";
+        public static string Admin_Password = "vangdv@01011990";
+
+
     }
 }

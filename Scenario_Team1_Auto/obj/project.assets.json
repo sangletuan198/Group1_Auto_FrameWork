@@ -10110,19 +10110,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sang\\.nuget\\packages\\": {}
+    "C:\\Users\\Acer\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\sang\\Desktop\\Group1_Auto_FrameWork\\Scenario_Team1_Auto\\Scenario_Team1_Auto.csproj",
+      "projectUniqueName": "C:\\Users\\Acer\\Desktop\\Group1_Auto_FrameWork\\Scenario_Team1_Auto\\Scenario_Team1_Auto.csproj",
       "projectName": "Scenario_Team1_Auto",
-      "projectPath": "c:\\Users\\sang\\Desktop\\Group1_Auto_FrameWork\\Scenario_Team1_Auto\\Scenario_Team1_Auto.csproj",
-      "packagesPath": "C:\\Users\\sang\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\sang\\Desktop\\Group1_Auto_FrameWork\\Scenario_Team1_Auto\\obj\\",
+      "projectPath": "C:\\Users\\Acer\\Desktop\\Group1_Auto_FrameWork\\Scenario_Team1_Auto\\Scenario_Team1_Auto.csproj",
+      "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Acer\\Desktop\\Group1_Auto_FrameWork\\Scenario_Team1_Auto\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\sang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10136,8 +10136,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "c:\\Users\\sang\\Desktop\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj": {
-              "projectPath": "c:\\Users\\sang\\Desktop\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj"
+            "C:\\Users\\Acer\\Desktop\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj": {
+              "projectPath": "C:\\Users\\Acer\\Desktop\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj"
             }
           }
         }
@@ -10189,7 +10189,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

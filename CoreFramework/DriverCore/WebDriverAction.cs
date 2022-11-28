@@ -54,6 +54,7 @@ namespace CoreFramework.DriverCore
             return e;
          
         }
+
         public IWebElement FindElementByXpath(string locator)
         {
 

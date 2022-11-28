@@ -6,17 +6,22 @@ using RookiesTest.TestSetup;
 using Scenario_Team1_Auto.DAO;
 
 
-namespace RookiesTest.APITest
+namespace Scenario_Team1_Auto.TestCase.Admin
 {
     [TestFixture]
-    public class Login : ProjectNUnitTestSetup
+    public class LoginAdmin : ProjectNUnitTestSetup
     {
         [Test]
         public void TestCase()
         {
             LoginPage loginPage = new LoginPage(_driver);
+            HomePage homePage = new HomePage(_driver);
 
-            loginPage.SendKeyLogin();
+
+            loginPage.Login(Constant.Admin_UserName, Constant.Admin_Password);
+            homePage.VerifyAccessAuthority();
+            homePage.ChangePassword("12345678");
+
         }
 
     }
