@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sang\\source\\repos\\AutomationFrameWork\\CoreFramework\\CoreFramework.csproj": {}
+    "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sang\\source\\repos\\AutomationFrameWork\\CoreFramework\\CoreFramework.csproj": {
+    "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sang\\source\\repos\\AutomationFrameWork\\CoreFramework\\CoreFramework.csproj",
+        "projectUniqueName": "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj",
         "projectName": "CoreFramework",
-        "projectPath": "C:\\Users\\sang\\source\\repos\\AutomationFrameWork\\CoreFramework\\CoreFramework.csproj",
+        "projectPath": "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj",
         "packagesPath": "C:\\Users\\sang\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sang\\source\\repos\\AutomationFrameWork\\CoreFramework\\obj\\",
+        "outputPath": "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\CoreFramework\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sang\\AppData\\Roaming\\NuGet\\NuGet.Config",

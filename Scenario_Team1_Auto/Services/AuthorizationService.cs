@@ -27,10 +27,11 @@ namespace Scenario_Team1_Auto.Services
         public UserDAO Login(string username, string password)
         {
             APIResponse response = LoginRequest(username, password);
+
             Assert.True(response.responseStatusCode.Equals("OK"));
 
             UserDAO user = (UserDAO)JsonConvert.DeserializeObject<UserDAO>(response.responseBody);
-            TestContext.WriteLine(user.token  );
+            TestContext.WriteLine(user.token);
             return user;
         }
     }

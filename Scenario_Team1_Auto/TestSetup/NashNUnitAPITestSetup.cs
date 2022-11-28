@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using CoreFramework.NUnitTestSetup;
+using NUnit.Framework;
 using Scenario_Team1_Auto.DAO;
 using Scenario_Team1_Auto.Services;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Scenario_Team1_Auto.TestSetup
 {
-    public class NashNUnitAPITestSetup
+    public class NashNUnitAPITestSetup : NUnitTestSetup
     {
         public NashUserDAO user;
         public AssetService assetService;

@@ -16,8 +16,7 @@ namespace CoreFramework.NUnitTestSetup
     {
         public IWebDriver? _driver;
         public WebDriverAction driverBaseAction;
-
-        protected ExtentReports? _extentReports;
+        public ExtentReports? _extentReports;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
@@ -25,7 +24,6 @@ namespace CoreFramework.NUnitTestSetup
             HtmlReport.createReport();
             HtmlReport.createTest(TestContext.CurrentContext.Test.ClassName);
         }
-
         [SetUp]
         public void SetUp()
         {
@@ -34,7 +32,6 @@ namespace CoreFramework.NUnitTestSetup
             _driver = WebDriverManager_.GetCurrentDriver();
             driverBaseAction = new WebDriverAction(_driver);
         }
-
         [TearDown]
         public void TearDown()
         {
@@ -42,13 +39,10 @@ namespace CoreFramework.NUnitTestSetup
             TestStatus testStatus = TestContext.CurrentContext.Result.Outcome.Status;
             if (testStatus.Equals(TestStatus.Passed))
             {
-
             }
             else if (testStatus.Equals(TestStatus.Failed))
             {
-
             }
-
             HtmlReport.flush();
         }
     }

@@ -38,6 +38,22 @@ namespace CoreFramework.DriverCore
                 return false;
             }
         }
+        public IWebElement IsElementEnable(string locator)
+        {
+
+
+            IWebElement e =  FindElementByXpath(locator);
+            if (e.Enabled)
+            {
+                TestContext.WriteLine("element is enable");
+            }
+            else
+            {
+                TestContext.WriteLine("element is disable");
+            }
+            return e;
+         
+        }
         public IWebElement FindElementByXpath(string locator)
         {
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BCUHgH4Og0VqGO9i2ps1ezVW4zGp92OnH8PfORM1aSB91ZwhFaRf8Yr/NyV1dGm913lM9FZipQ0s8Z3IegjYjQ==",
+  "dgSpecHash": "r6XMUwbCNZrzGjPJWQykaye01ttZQ2VSEOYtraZ2vW4dcQEvvHnVXhMAcbzkwzRUqYnL95u99l0x7blqrCrGGA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\sang\\source\\repos\\AutomationFrameWork\\Scenario_Team1_Auto\\Scenario_Team1_Auto.csproj",
+  "projectFilePath": "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\Scenario_Team1_Auto\\Scenario_Team1_Auto.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sang\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\sang\\.nuget\\packages\\dnsclient\\1.2.0\\dnsclient.1.2.0.nupkg.sha512",

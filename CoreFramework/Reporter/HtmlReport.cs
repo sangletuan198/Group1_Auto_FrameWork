@@ -63,7 +63,7 @@ namespace CoreFramework.Reporter
             {
                 extentTestSuite = createTest(className);
             }
-            ExtentTest extentTestCase = extentTestSuite.CreateNode(testcase, description);
+            extentTestCase = extentTestSuite.CreateNode(testcase, description);
             return extentTestCase;
         }
 
@@ -130,12 +130,6 @@ namespace CoreFramework.Reporter
 
         /*----------------------MARKUP EXTENT REPORT------------------------*/
 
-        /*public static void MarkUpHtml()
-        {
-            var htmlMarkup = HtmlInjector.CreateHtml();
-            var m = MarkupHelper.CreateTable(htmlMarkup, ExtentColor.Transparent);
-            GetTest().Info(m);
-        }*/
         public static void MarkupPassJson()
         {
             var json = "{'foo':'bar':'foos':['b','a','r'], " +

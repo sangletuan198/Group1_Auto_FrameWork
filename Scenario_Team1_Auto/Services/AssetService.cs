@@ -14,18 +14,14 @@ namespace Scenario_Team1_Auto.Services
     public class AssetService
     {
         private string getAssetPath = "/api/v1/assets?locationId=&searchTerm=&cateFill=&stateFill=&pageSize=10&pageNo=1&sortBy=assetId&sortDir=asc";
-
         public APIResponse GetAssetRequest(string token)
         {
-
             APIResponse response = new APIRequest()
                 .SetUrl(Constant.NASH_HOST + getAssetPath)
                 .AddHeader("Authorization", "Bearer" + token)
                 .Get();
-
             return response;
         }
-
         public AssetsDAO GetAssets(string token)
         {
             APIResponse response = GetAssetRequest(token);

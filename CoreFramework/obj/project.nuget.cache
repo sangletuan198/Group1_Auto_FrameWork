@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fFBTpWwJiyjW5R1OkovMrJUNOCwtF45RPtqaXEN1f4mRAvTP7YzohT3f04KzLwtFKwe/he1I5lA5YKiNjrbMXA==",
+  "dgSpecHash": "ZIDm9dqy4Mz5tLp5oA5g87J3Y7yXHdqipKup4dP8S7KhvWmD+LyGf7SR8aNxtJO50giwcJeTA4sbIYCXyZCx2w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\sang\\source\\repos\\AutomationFrameWork\\CoreFramework\\CoreFramework.csproj",
+  "projectFilePath": "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sang\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\sang\\.nuget\\packages\\dnsclient\\1.2.0\\dnsclient.1.2.0.nupkg.sha512",

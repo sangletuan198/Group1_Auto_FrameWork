@@ -10115,11 +10115,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sang\\source\\repos\\AutomationFrameWork\\Scenario_Team1_Auto\\Scenario_Team1_Auto.csproj",
+      "projectUniqueName": "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\Scenario_Team1_Auto\\Scenario_Team1_Auto.csproj",
       "projectName": "Scenario_Team1_Auto",
-      "projectPath": "C:\\Users\\sang\\source\\repos\\AutomationFrameWork\\Scenario_Team1_Auto\\Scenario_Team1_Auto.csproj",
+      "projectPath": "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\Scenario_Team1_Auto\\Scenario_Team1_Auto.csproj",
       "packagesPath": "C:\\Users\\sang\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sang\\source\\repos\\AutomationFrameWork\\Scenario_Team1_Auto\\obj\\",
+      "outputPath": "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\Scenario_Team1_Auto\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\sang\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -10136,8 +10136,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\sang\\source\\repos\\AutomationFrameWork\\CoreFramework\\CoreFramework.csproj": {
-              "projectPath": "C:\\Users\\sang\\source\\repos\\AutomationFrameWork\\CoreFramework\\CoreFramework.csproj"
+            "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj": {
+              "projectPath": "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj"
             }
           }
         }

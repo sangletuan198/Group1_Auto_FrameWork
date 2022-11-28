@@ -8,7 +8,7 @@ namespace Scenario_Team1_Auto.TestSetup
 {
     public class Constant  
     {
-        public static string baseUrl = "https://demoqa.com/";
+        public static string baseUrl = "http://13.212.23.86";
         public static string BOOK_STORE_HOST = "https://demoqa.com";
         public static string USERNAME = "tunguyenn";
         public static string PASSWORD = "123@123aA";
