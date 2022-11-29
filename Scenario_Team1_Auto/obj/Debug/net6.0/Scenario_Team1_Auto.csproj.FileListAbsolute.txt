@@ -706,3 +706,5 @@ C:\Users\Acer\Desktop\Group1_Auto_FrameWork\Scenario_Team1_Auto\obj\Debug\net6.0
 C:\Users\Acer\Desktop\Group1_Auto_FrameWork\Scenario_Team1_Auto\obj\Debug\net6.0\Scenario_Team1_Auto.pdb
 C:\Users\Acer\Desktop\Group1_Auto_FrameWork\Scenario_Team1_Auto\obj\Debug\net6.0\Scenario_Team1_Auto.genruntimeconfig.cache
 C:\Users\Acer\Desktop\Group1_Auto_FrameWork\Scenario_Team1_Auto\obj\Debug\net6.0\ref\Scenario_Team1_Auto.dll
+C:\Users\sang\source\repos\Group1_Auto_FrameWork\Scenario_Team1_Auto\bin\Debug\net6.0\SeleniumExtras.WaitHelpers.dll
+C:\Users\sang\source\repos\Group1_Auto_FrameWork\Scenario_Team1_Auto\bin\Debug\net6.0\ZendeskApi_v2.dll

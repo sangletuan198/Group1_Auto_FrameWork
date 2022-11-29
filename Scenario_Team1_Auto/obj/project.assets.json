@@ -1828,13 +1828,25 @@
           "lib/net5.0/WebDriver.dll": {}
         },
         "build": {
-          "build/_._": {}
+          "build/Selenium.WebDriver.targets": {}
         }
       },
       "Selenium.WebDriver.ChromeDriver/107.0.5304.6200": {
         "type": "package",
         "build": {
           "build/_._": {}
+        }
+      },
+      "SeleniumExtras.WaitHelpers/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Selenium.WebDriver": "4.0.0-beta2"
+        },
+        "compile": {
+          "lib/netstandard2.1/SeleniumExtras.WaitHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/SeleniumExtras.WaitHelpers.dll": {}
         }
       },
       "SharpCompress/0.23.0": {
@@ -3486,6 +3498,18 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
+      "ZendeskApi_v2/3.12.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.1/ZendeskApi_v2.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/ZendeskApi_v2.dll": {}
+        }
+      },
       "CoreFramework/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -3498,6 +3522,8 @@
           "Selenium.Support": "4.6.0",
           "Selenium.WebDriver": "4.6.0",
           "Selenium.WebDriver.ChromeDriver": "107.0.5304.6200",
+          "SeleniumExtras.WaitHelpers": "1.0.2",
+          "ZendeskApi_v2": "3.12.0",
           "coverlet.collector": "3.1.2"
         },
         "compile": {
@@ -5715,6 +5741,19 @@
         "nupkg-icon.png",
         "selenium.webdriver.chromedriver.107.0.5304.6200.nupkg.sha512",
         "selenium.webdriver.chromedriver.nuspec"
+      ]
+    },
+    "SeleniumExtras.WaitHelpers/1.0.2": {
+      "sha512": "de7m30nkZZLkfCncYBdluUpM27AR/Vkk4kiA4HRQbV+fZI3ps4qGIeJCuj8TAMXdMfQik5Rno8xPnFBIod+ebg==",
+      "type": "package",
+      "path": "seleniumextras.waithelpers/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/netstandard2.1/SeleniumExtras.WaitHelpers.dll",
+        "seleniumextras.waithelpers.1.0.2.nupkg.sha512",
+        "seleniumextras.waithelpers.nuspec"
       ]
     },
     "SharpCompress/0.23.0": {
@@ -10093,6 +10132,20 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
+    "ZendeskApi_v2/3.12.0": {
+      "sha512": "h1pAmPhchjc3WmU+7TAGc2CjCDX9pNfmuve4ElbQoRtdj1Q3bs0eKN6hdjmzUcfC3uFg5Yb4cHvX7IJv6isQPw==",
+      "type": "package",
+      "path": "zendeskapi_v2/3.12.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net462/ZendeskApi_v2.dll",
+        "lib/netstandard2.1/ZendeskApi_v2.dll",
+        "lotus.png",
+        "zendeskapi_v2.3.12.0.nupkg.sha512",
+        "zendeskapi_v2.nuspec"
+      ]
+    },
     "CoreFramework/1.0.0": {
       "type": "project",
       "path": "../CoreFramework/CoreFramework.csproj",
@@ -10106,23 +10159,26 @@
       "NUnit >= 3.13.3",
       "NUnit.Analyzers >= 3.3.0",
       "NUnit3TestAdapter >= 4.2.1",
+      "NuGet.Frameworks >= 5.11.0",
+      "Selenium.WebDriver >= 4.6.0",
+      "SeleniumExtras.WaitHelpers >= 1.0.2",
       "coverlet.collector >= 3.1.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Acer\\.nuget\\packages\\": {}
+    "C:\\Users\\sang\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Acer\\Desktop\\Group1_Auto_FrameWork\\Scenario_Team1_Auto\\Scenario_Team1_Auto.csproj",
+      "projectUniqueName": "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\Scenario_Team1_Auto\\Scenario_Team1_Auto.csproj",
       "projectName": "Scenario_Team1_Auto",
-      "projectPath": "C:\\Users\\Acer\\Desktop\\Group1_Auto_FrameWork\\Scenario_Team1_Auto\\Scenario_Team1_Auto.csproj",
-      "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Acer\\Desktop\\Group1_Auto_FrameWork\\Scenario_Team1_Auto\\obj\\",
+      "projectPath": "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\Scenario_Team1_Auto\\Scenario_Team1_Auto.csproj",
+      "packagesPath": "C:\\Users\\sang\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\Scenario_Team1_Auto\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sang\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10136,8 +10192,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Acer\\Desktop\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj": {
-              "projectPath": "C:\\Users\\Acer\\Desktop\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj"
+            "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj": {
+              "projectPath": "C:\\Users\\sang\\source\\repos\\Group1_Auto_FrameWork\\CoreFramework\\CoreFramework.csproj"
             }
           }
         }
@@ -10168,6 +10224,18 @@
             "target": "Package",
             "version": "[4.2.1, )"
           },
+          "NuGet.Frameworks": {
+            "target": "Package",
+            "version": "[5.11.0, )"
+          },
+          "Selenium.WebDriver": {
+            "target": "Package",
+            "version": "[4.6.0, )"
+          },
+          "SeleniumExtras.WaitHelpers": {
+            "target": "Package",
+            "version": "[1.0.2, )"
+          },
           "coverlet.collector": {
             "target": "Package",
             "version": "[3.1.2, )"
@@ -10189,7 +10257,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

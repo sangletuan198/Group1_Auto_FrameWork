@@ -686,3 +686,5 @@ C:\Users\Acer\Desktop\Group1_Auto_FrameWork\CoreFramework\obj\Debug\net6.0\refin
 C:\Users\Acer\Desktop\Group1_Auto_FrameWork\CoreFramework\obj\Debug\net6.0\CoreFramework.pdb
 C:\Users\Acer\Desktop\Group1_Auto_FrameWork\CoreFramework\obj\Debug\net6.0\CoreFramework.genruntimeconfig.cache
 C:\Users\Acer\Desktop\Group1_Auto_FrameWork\CoreFramework\obj\Debug\net6.0\ref\CoreFramework.dll
+C:\Users\sang\source\repos\Group1_Auto_FrameWork\CoreFramework\bin\Debug\net6.0\SeleniumExtras.WaitHelpers.dll
+C:\Users\sang\source\repos\Group1_Auto_FrameWork\CoreFramework\bin\Debug\net6.0\ZendeskApi_v2.dll

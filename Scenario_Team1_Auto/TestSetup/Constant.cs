@@ -23,7 +23,7 @@ namespace Scenario_Team1_Auto.TestSetup
 
         public static string Admin_UserName = "vangdv";
         public static string Admin_Password = "vangdv@01011990";
-
+        public static string Admin_New_Password = "12345678";
 
     }
 }

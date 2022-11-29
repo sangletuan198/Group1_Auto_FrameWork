@@ -20,6 +20,9 @@ namespace Scenario_Team1_Auto.PageObject
         
         private readonly String btnConfigUser = "//li[@role='none']";
         private readonly String btnChangePassword = "//div[contains(@style, 'position')]//li[1]";
+        private readonly String btnLogout = "//div[contains(@style, 'position')]//li[2]";
+        private readonly String btnConfirmLogout = "//button[@class='ant-btn ant-btn-primary ant-btn-dangerous']";
+
 
         private readonly String tfOldPassword = "//input[@placeholder='Old Password']";
         private readonly String tfNewPassword = "//input[@placeholder='New Password']";
@@ -35,15 +38,29 @@ namespace Scenario_Team1_Auto.PageObject
             IsElementDisplay(btnManageAassignments);
         }
 
-        public void ChangePassword(string newPassword)
+        public void ChangePassword(string oldPassword,string newPassword)
         {
             Clicks(btnConfigUser);
             Clicks(btnChangePassword);
+
             IsElementEnable(btnSave);
-            SendKeys_(tfOldPassword, Constant.Admin_Password);
+
+            SendKeys_(tfOldPassword, oldPassword);
             SendKeys_(tfNewPassword, newPassword);
+
             Clicks(btnSave);
+
         }
-        
+        public void Logout()
+        {
+            Clicks(btnConfigUser);
+            Clicks(btnLogout);
+            Clicks(btnConfirmLogout);
+        }
+
+        public void GetManageAassignmentsPage()
+        {
+            Clicks(btnManageAassignments);
+        }
     }
 }

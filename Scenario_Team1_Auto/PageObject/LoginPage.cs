@@ -25,8 +25,8 @@ namespace Scenario_Team1_Auto.PageObject
         public void Login(string username, string password)
         {
             IsElementEnable(btnLogin);
-            SendKeys_(tfUserName,Constant.Admin_UserName);
-            SendKeys_(tfPassWord,Constant.Admin_Password);
+            SendKeys_(tfUserName, username);
+            SendKeys_(tfPassWord, password);
             IsElementEnable(btnLogin);
             Clicks(btnLogin);
         }

@@ -16,6 +16,8 @@
           "Selenium.Support": "4.6.0",
           "Selenium.WebDriver": "4.6.0",
           "Selenium.WebDriver.ChromeDriver": "107.0.5304.6200",
+          "SeleniumExtras.WaitHelpers": "1.0.2",
+          "ZendeskApi_v2": "3.12.0",
           "coverlet.collector": "3.1.2"
         },
         "runtime": {
@@ -1294,6 +1296,17 @@
         }
       },
       "Selenium.WebDriver.ChromeDriver/107.0.5304.6200": {},
+      "SeleniumExtras.WaitHelpers/1.0.2": {
+        "dependencies": {
+          "Selenium.WebDriver": "4.6.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/SeleniumExtras.WaitHelpers.dll": {
+            "assemblyVersion": "1.0.2.0",
+            "fileVersion": "1.0.2.0"
+          }
+        }
+      },
       "SharpCompress/0.23.0": {
         "dependencies": {
           "System.Text.Encoding.CodePages": "4.5.1"
@@ -2126,6 +2139,17 @@
           "System.Xml.XDocument": "4.3.0",
           "System.Xml.XPath": "4.3.0"
         }
+      },
+      "ZendeskApi_v2/3.12.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.1/ZendeskApi_v2.dll": {
+            "assemblyVersion": "3.12.0.0",
+            "fileVersion": "3.12.0.0"
+          }
+        }
       }
     }
   },
@@ -2835,6 +2859,13 @@
       "path": "selenium.webdriver.chromedriver/107.0.5304.6200",
       "hashPath": "selenium.webdriver.chromedriver.107.0.5304.6200.nupkg.sha512"
     },
+    "SeleniumExtras.WaitHelpers/1.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-de7m30nkZZLkfCncYBdluUpM27AR/Vkk4kiA4HRQbV+fZI3ps4qGIeJCuj8TAMXdMfQik5Rno8xPnFBIod+ebg==",
+      "path": "seleniumextras.waithelpers/1.0.2",
+      "hashPath": "seleniumextras.waithelpers.1.0.2.nupkg.sha512"
+    },
     "SharpCompress/0.23.0": {
       "type": "package",
       "serviceable": true,
@@ -3443,6 +3474,13 @@
       "sha512": "sha512-jw9oHHEIVW53mHY9PgrQa98Xo2IZ0ZjrpdOTmtvk+Rvg4tq7dydmxdNqUvJ5YwjDqhn75mBXWttWjiKhWP53LQ==",
       "path": "system.xml.xpath.xdocument/4.3.0",
       "hashPath": "system.xml.xpath.xdocument.4.3.0.nupkg.sha512"
+    },
+    "ZendeskApi_v2/3.12.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-h1pAmPhchjc3WmU+7TAGc2CjCDX9pNfmuve4ElbQoRtdj1Q3bs0eKN6hdjmzUcfC3uFg5Yb4cHvX7IJv6isQPw==",
+      "path": "zendeskapi_v2/3.12.0",
+      "hashPath": "zendeskapi_v2.3.12.0.nupkg.sha512"
     }
   }
 }

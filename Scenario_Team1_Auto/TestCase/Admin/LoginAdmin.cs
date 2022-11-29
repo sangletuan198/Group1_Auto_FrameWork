@@ -17,12 +17,27 @@ namespace Scenario_Team1_Auto.TestCase.Admin
             LoginPage loginPage = new LoginPage(_driver);
             HomePage homePage = new HomePage(_driver);
 
+            string userName = Constant.Admin_UserName;
+            string password = Constant.Admin_Password;
+            string newPassword = Constant.Admin_New_Password;
 
-            loginPage.Login(Constant.Admin_UserName, Constant.Admin_Password);
+            // Login with default password
+            loginPage.Login(userName, password);
+
+            // Verify authority of admin
             homePage.VerifyAccessAuthority();
-            homePage.ChangePassword("12345678");
 
+            // Change password
+            homePage.ChangePassword(password,newPassword);
+
+            // Login with newpassword 
+            loginPage.Login(userName, newPassword);
+
+
+            // Logout and reset password
+            homePage.ChangePassword(newPassword, password);
+            loginPage.Login(userName, password);
+            homePage.Logout();
         }
-
     }
 }
