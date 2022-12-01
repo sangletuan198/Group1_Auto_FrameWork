@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using Scenario_Team1_Auto.DAO;
 using Scenario_Team1_Auto.Services;
-using Scenario_Team1_Auto.TestSetup;
 
 namespace Scenario_Team1_Auto.TestSetup
 {
@@ -10,13 +9,13 @@ namespace Scenario_Team1_Auto.TestSetup
     {
         public NashUserDAO user;
         public AssetService assetService;
-
+        public NashAuthorizationService nashAuthorizationService;
         [SetUp]
         public void SetUp()
         {
-            NashAuthorizationService nashAuthorizationService = new NashAuthorizationService();
+            nashAuthorizationService = new NashAuthorizationService();
             assetService = new AssetService();
-            user = nashAuthorizationService.Login(Constant.NASH_USERNAME, Constant.NASH_PASSWORD);
+            user = nashAuthorizationService.Login(Constant.adminUserName, Constant.adminPassword);
         }
         [TearDown]
         public void TearDown()

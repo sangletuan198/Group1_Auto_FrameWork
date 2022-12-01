@@ -1,29 +1,31 @@
 ﻿
 namespace Scenario_Team1_Auto.DAO
 {
-    public class AssetDAO
+    public class UserListDAO
     {
         public string assetId { get; set; }
         public string name { get; set; }
-        public Category category { get; set; }
+       
         public string specification { get; set; }
         public string installedDate { get; set; }
         public string state { get; set; }
-        public AssetDAO(string assetId, string name, Category category, string specification, string installedDate, string state)
+        public Location location { get; set; }
+        public UserListDAO(string assetId, string name, string specification, string installedDate, string state, Location location)
         {
             this.assetId = assetId;
             this.name = name;
-            this.category = category;
+            
             this.specification = specification;
             this.installedDate = installedDate;
             this.state = state;
+            this.location = location;
         }
         public Dictionary<string, object> ConvertAssetData()
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
             data["assetId"] = assetId;
             data["name"] = name;
-            data["category"] = category.CategoryId;
+            data["location"] = location.City;
             data["specification"] = specification;
             data["installedDate"] = installedDate;
             data["state"] = state;
@@ -32,21 +34,21 @@ namespace Scenario_Team1_Auto.DAO
         }
         
     }
-    public class ContentDAO
+    public class ListContentDAO
     {
-        public List<AssetDAO> content { get; set; }
+        public List<UserListDAO> content { get; set; }
     }
-    public class Category
+    public class Location
     {
-        public Category(long categoryId, string name)
+        public Location(long locationId, string city)
         {
-            CategoryId = categoryId;
-            Name = name;
+            LocationId = locationId;
+            City = city;
         }
 
-        public long CategoryId { get; set; }
+        public long LocationId { get; set; }
 
-        public string Name { get; set; }
+        public string City { get; set; }
     }
     
 

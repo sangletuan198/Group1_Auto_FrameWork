@@ -1,4 +1,5 @@
 ﻿using CoreFramework.DriverCore;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -20,22 +21,40 @@ namespace Scenario_Team1_Auto.PageObject
         public string btnSelectDate = "//input[@id='datepicker']";
         public string tfSearchButton = "//input[@placeholder=\'Search\']";
         public string btnCreateNewAsset = "//span[contains(text(),'Create new asset')]";
+        public string listAssignment = "//tr[@class='ant-table-row ant-table-row-level-0']";
+        public string popupDetailAssignment = "//div[@class='ant-modal-mask']";
 
-        public string assignmentRow = "//tr[@data-row-key='1']";
         //tr[@data-row-key='1']/td[8]/preceding-sibling::td
 
-        public void isManageAssignmentsPageDisplay()
+        public void VerifyManageAssignmentsPageDisplay()
         {
             IsElementDisplay(pageTitle);
         }
-        public void getAssignmentPopup()
+
+
+
+
+        public IList<IWebElement> GetAssignmentList()
         {
-            Clicks(assignmentRow);
+            IList<IWebElement> randomAssignment = FindElementsByXpath(listAssignment);
+            return randomAssignment;
         }
 
-        public void verifyAssignmentPopup()
+        public void GetDetailOfRandomAssignment()
         {
-
+            IList<IWebElement> randomAssignment = GetAssignmentList();
+            foreach (var assignment in randomAssignment)
+            {
+                Console.WriteLine(assignment.Text);
+            }
+            var random = new Random();
+            int index = random.Next(randomAssignment.Count);
+            Click(randomAssignment[index]);
+            TestContext.WriteLine(randomAssignment[index].Text);
+        }
+        public void VerifyAssignmentPopupDisplay()
+        {
+            IsElementDisplay(popupDetailAssignment);
         }
 
 

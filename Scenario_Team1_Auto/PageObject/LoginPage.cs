@@ -15,8 +15,6 @@ namespace Scenario_Team1_Auto.PageObject
         public LoginPage(IWebDriver driver) : base(driver)
         { 
         }
-        //tuandv la staff
-        //vangdv la admin
 
         private readonly String tfUserName = "//*[@id='login_username']"; 
         private readonly String tfPassWord = "//*[@id='login_password']";

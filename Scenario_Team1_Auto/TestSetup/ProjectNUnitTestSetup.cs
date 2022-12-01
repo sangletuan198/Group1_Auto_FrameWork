@@ -5,7 +5,6 @@ namespace Scenario_Team1_Auto.TestSetup
 {
     public class ProjectNUnitTestSetup : NUnitTestSetup
     {
-
         [SetUp]
         public void SetUp()
         {
@@ -14,7 +13,6 @@ namespace Scenario_Team1_Auto.TestSetup
         [TearDown]
         public void TearDown()
         {
-
         }
     }
 }
