@@ -21,11 +21,10 @@ namespace Scenario_Team1_Auto.Services
            
             TestContext.WriteLine(body);
             APIResponse response = new APIRequest()
-                .SetUrl(Constant.NASH_HOST + loginPath)
+                .SetUrl(Constant.nashHost + loginPath)
                 .AddHeader("Content-Type", "application/json")
                 .SetBody(body)
                 .Post();
-
             return response;
         }
 

@@ -1,29 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Scenario_Team1_Auto.TestSetup
+﻿namespace Scenario_Team1_Auto.TestSetup
 {
     public class Constant  
     {
         public static string baseUrl = "http://13.212.23.86";
-        public static string BOOK_STORE_HOST = "https://demoqa.com";
-        public static string USERNAME = "tunguyenn";
-        public static string PASSWORD = "123@123aA";
+        public static string nashHost = "http://13.212.23.86";
 
+        public static string staffUserName = "quynhct";
+        public static string staffPassword = "quynhct@01011990";
 
-        public static string NASH_HOST = "http://13.212.23.86";
-        public static string NASH_USERNAME = "vangdv";
-        public static string NASH_PASSWORD = "vangdv@01011990";
-
-        public static string Staff_UserName = "quynhct";
-        public static string Staff_Password = "quynhct@01011990";
-
-        public static string Admin_UserName = "vangdv";
-        public static string Admin_Password = "vangdv@01011990";
-        public static string Admin_New_Password = "12345678";
-
+        public static string adminUserName = "vangdv";
+        public static string adminPassword = "vangdv@01011990";
+        public static string newPassword = "12345678";
     }
 }

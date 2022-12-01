@@ -13,7 +13,7 @@ namespace Scenario_Team1_Auto.TestData
         public List<AssignmentDAO> testAssignmentRow = new List<AssignmentDAO>();
         public void CreateTestAssignmentRow()
         {
-            testAssignmentRow.Add(new AssignmentDAO("","", "", "", "", "", ""));
+            testAssignmentRow.Add(new AssignmentDAO("", "", "", "", "", ""));
         }
     }
 }

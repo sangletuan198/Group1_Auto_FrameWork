@@ -8,22 +8,22 @@ namespace Scenario_Team1_Auto.DAO
 {
     public class AssignmentDAO
     {
-        public string No { get; set; }
-        public string Assetcode { get; set; }
+      
+        public string AssetCode { get; set; }
         public string AssetName { get; set; }
-        public string AssetTo { get; set; }
-        public string AssetBy { get; set; }
-        public string AssetDate { get; set; }
+        public string AssignedTo { get; set; }
+        public string AssignedBy { get; set; }
+        public string AssignedDate { get; set; }
         public string State { get; set; }
 
-        public AssignmentDAO(string no, string assetcode, string assetName, string assetTo, string assetBy, string assetDate, string state)
+        public AssignmentDAO(string assetCode, string assetName, string assignedTo, string assignedBy, string assignedDate, string state)
         {
-            No = no;
-            Assetcode = assetcode;
+          
+            AssetCode = assetCode;
             AssetName = assetName;
-            AssetTo = assetTo;
-            AssetBy = assetBy;
-            AssetDate = assetDate;
+            AssignedTo = assignedTo;
+            AssignedBy = assignedBy;
+            AssignedDate = assignedDate;
             State = state;
         }
     }

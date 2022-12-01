@@ -14,6 +14,7 @@ namespace Scenario_Team1_Auto.PageObject
         public HomePage(IWebDriver driver) : base(driver)
         {
         }
+        private readonly String btnHome = "//a[@href='/home']";
         private readonly String btnManageUser = "//a[@href='/manage-users']";
         private readonly String btnManageAssets = "//a[@href='/manage-assets']";
         private readonly String btnManageAassignments = "//a[@href='/manage-assignments']";
@@ -23,19 +24,23 @@ namespace Scenario_Team1_Auto.PageObject
         private readonly String btnLogout = "//div[contains(@style, 'position')]//li[2]";
         private readonly String btnConfirmLogout = "//button[@class='ant-btn ant-btn-primary ant-btn-dangerous']";
 
-
         private readonly String tfOldPassword = "//input[@placeholder='Old Password']";
         private readonly String tfNewPassword = "//input[@placeholder='New Password']";
         private readonly String btnSave = "//button[@type='submit']";
 
-        
-
-
-        public void VerifyAccessAuthority()
+        public void VerifyAdminAccessAuthority()
         {
+            IsElementDisplay(btnHome);
             IsElementDisplay(btnManageUser);
             IsElementDisplay(btnManageAssets);
             IsElementDisplay(btnManageAassignments);
+        }
+        public void VerifyStaffAccessAuthority()
+        {
+            IsElementDisplay(btnHome);
+            IsElementNotDisplay(btnManageUser);
+            IsElementNotDisplay(btnManageAssets);
+            IsElementNotDisplay(btnManageAassignments);
         }
 
         public void ChangePassword(string oldPassword,string newPassword)
@@ -49,7 +54,6 @@ namespace Scenario_Team1_Auto.PageObject
             SendKeys_(tfNewPassword, newPassword);
 
             Clicks(btnSave);
-
         }
         public void Logout()
         {
@@ -61,6 +65,10 @@ namespace Scenario_Team1_Auto.PageObject
         public void GetManageAassignmentsPage()
         {
             Clicks(btnManageAassignments);
+        }
+        public void GetManageUserPage()
+        {
+            Clicks(btnManageUser);
         }
     }
 }
