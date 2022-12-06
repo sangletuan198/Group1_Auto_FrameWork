@@ -15,7 +15,7 @@ namespace Scenario_Team1_Auto.PageObject
         public ManagaUserPage(IWebDriver driver) : base(driver)
         {
         }
-        private readonly string detaiPopup = "//div[@class=\"ant-modal-mask\"]";
+        private readonly string detaiPopup = "//div[contains(text(),'Detailed User Information')]";
         private readonly string listUser = "//div[@id='root']//tr[@class='ant-table-row ant-table-row-level-0']";
         private readonly string pageTitle = "//div[contains(text(),'Manage Users')]";
 

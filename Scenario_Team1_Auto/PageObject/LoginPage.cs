@@ -16,17 +16,27 @@ namespace Scenario_Team1_Auto.PageObject
         { 
         }
 
-        private readonly String tfUserName = "//*[@id='login_username']"; 
-        private readonly String tfPassWord = "//*[@id='login_password']";
+        private readonly String tfUserName = "//input[@id='login_username']"; 
+        private readonly String tfPassWord = "//input[@id='login_password']";
         private readonly String btnLogin = "//button[@type='submit']";
+        private readonly String tfPasswordFirtTime = "//*[@id='change-password-first-time_newPassword']";
+        private readonly String btnSave = "//*[@type='submit']";
+
 
         public void Login(string username, string password)
         {
-            IsElementEnable(btnLogin);
+            IsElementDisable(btnLogin);
             SendKeys_(tfUserName, username);
             SendKeys_(tfPassWord, password);
             IsElementEnable(btnLogin);
             Clicks(btnLogin);
+        }
+        public void ChangePasswordForTheFirstTime(string newPassword)
+        {
+            IsElementDisable(btnSave);
+            SendKeys_(tfPasswordFirtTime, newPassword);
+            IsElementEnable(btnSave);
+            Clicks(btnSave);
         }
     }
 }

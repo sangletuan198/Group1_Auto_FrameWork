@@ -15,13 +15,15 @@ namespace Scenario_Team1_Auto.PageObject
         {
         }
         private readonly String btnHome = "//a[@href='/home']";
+        private readonly String btnHomePage = "//a[@href='/homepage']"; // homepage for staff
         private readonly String btnManageUser = "//a[@href='/manage-users']";
         private readonly String btnManageAssets = "//a[@href='/manage-assets']";
         private readonly String btnManageAassignments = "//a[@href='/manage-assignments']";
         
-        private readonly String btnConfigUser = "//li[@role='none']";
-        private readonly String btnChangePassword = "//div[contains(@style, 'position')]//li[1]";
-        private readonly String btnLogout = "//div[contains(@style, 'position')]//li[2]";
+        private readonly String btnConfigUser = "//div[@role='menuitem']";
+        private readonly String btnChangePassword = "//ul[@class='ant-menu ant-menu-sub ant-menu-vertical']/li[@role='menuitem'][1]";         
+        private readonly String btnLogout = "//ul[@class='ant-menu ant-menu-sub ant-menu-vertical']/li[@role='menuitem'][2]";   
+
         private readonly String btnConfirmLogout = "//button[@class='ant-btn ant-btn-primary ant-btn-dangerous']";
 
         private readonly String tfOldPassword = "//input[@placeholder='Old Password']";
@@ -37,27 +39,24 @@ namespace Scenario_Team1_Auto.PageObject
         }
         public void VerifyStaffAccessAuthority()
         {
-            IsElementDisplay(btnHome);
-            IsElementNotDisplay(btnManageUser);
-            IsElementNotDisplay(btnManageAssets);
-            IsElementNotDisplay(btnManageAassignments);
+            IsElementDisplay(btnHomePage);
         }
 
-        public void ChangePassword(string oldPassword,string newPassword)
+        public void ChangePassword(string user,string oldPassword,string newPassword)
         {
-            Clicks(btnConfigUser);
+            Clicks("//span[contains(text(),'"+user+"')]");
             Clicks(btnChangePassword);
 
-            IsElementEnable(btnSave);
+            IsElementDisable(btnSave);
 
             SendKeys_(tfOldPassword, oldPassword);
             SendKeys_(tfNewPassword, newPassword);
 
             Clicks(btnSave);
         }
-        public void Logout()
+        public void Logout(string user)
         {
-            Clicks(btnConfigUser);
+            Clicks("//span[contains(text(),'" + user + "')]");
             Clicks(btnLogout);
             Clicks(btnConfirmLogout);
         }

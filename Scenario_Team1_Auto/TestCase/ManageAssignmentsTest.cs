@@ -11,7 +11,7 @@ namespace Scenario_Team1_Auto.TestCase
 {
 
     [TestFixture]
-    public class ManageAassignments : ProjectNUnitTestSetup
+    public class ManageAassignments : NashNUnitAPITestSetup
     {
         [Test]
         public void ViewAllAassignment() // admin view Aassignments Page, Assignments List and detail of Aassignments
@@ -20,13 +20,18 @@ namespace Scenario_Team1_Auto.TestCase
             HomePage homePage = new HomePage(_driver);
             ManageAssignmentsPage manageAssignmentsPage = new ManageAssignmentsPage(_driver);
 
-            string userName = Constant.adminUserName;
-            string password = Constant.adminPassword;
+            string userName = Constant.ADMIN_USERNAME;
+            string password = Constant.ADMIN_PASSWORD;
 
             loginPage.Login(userName, password);
+
             homePage.GetManageAassignmentsPage();
+
             manageAssignmentsPage.VerifyManageAssignmentsPageDisplay();
+
             manageAssignmentsPage.GetAssignmentList();
+
+
             manageAssignmentsPage.GetDetailOfRandomAssignment();
             manageAssignmentsPage.VerifyAssignmentPopupDisplay();
         }

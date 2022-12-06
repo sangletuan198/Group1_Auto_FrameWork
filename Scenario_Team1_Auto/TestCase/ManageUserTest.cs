@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Scenario_Team1_Auto.TestCase
 {
     [TestFixture]
-    public class ManageUserTest : ProjectNUnitTestSetup
+    public class ManageUserTest : NashNUnitAPITestSetup
     {
         [Test]
         public void GetManageUserPage() // admin view ManageUser Page , Users List and detail of User
@@ -19,15 +19,19 @@ namespace Scenario_Team1_Auto.TestCase
             HomePage homePage = new HomePage(_driver);
             ManagaUserPage managaUserPage = new ManagaUserPage(_driver);
 
-            string adminUserName = Constant.adminUserName;
-            string adminPassword = Constant.adminPassword;
+            string adminUserName = Constant.ADMIN_USERNAME;
+            string adminPassword = Constant.ADMIN_PASSWORD;
 
             loginPage.Login(adminUserName, adminPassword);
+
             homePage.GetManageUserPage();
+
             managaUserPage.VerifyManageUserPageDisplay();
+
             managaUserPage.GetUserList();
             managaUserPage.GetDetailOfRandomUser();
             managaUserPage.VerifyPopupDisplay();
+
         }
     }
 }

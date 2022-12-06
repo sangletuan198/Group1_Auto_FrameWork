@@ -21,7 +21,7 @@ namespace Scenario_Team1_Auto.Services
            
             TestContext.WriteLine(body);
             APIResponse response = new APIRequest()
-                .SetUrl(Constant.nashHost + loginPath)
+                .SetUrl(Constant.BASE_HOST + loginPath)
                 .AddHeader("Content-Type", "application/json")
                 .SetBody(body)
                 .Post();

@@ -22,6 +22,7 @@ namespace CoreFramework.DriverCore
         public string getTitle()
         {
             return driver.Title;
+            
         }
         public string getUrl()
         {
@@ -67,14 +68,31 @@ namespace CoreFramework.DriverCore
             return e;
          
         }
+        public bool IsElementDisable(string locator)
+        {
+            IWebElement e = FindElementByXpath(locator);
+            if (e.Enabled)
+            {
+                return false;
+                TestContext.WriteLine("element is enable");
+            }
+            else
+            {
+                TestContext.WriteLine("element is disable");
+                return true;
+            }
+            
+
+        }
 
         public IWebElement FindElementByXpath(string locator)
         {
 
             try
             {
-                WaitForElementExists(driver, locator);
+                WaitForElementExists(driver, locator);  
                 IWebElement e = driver.FindElement(ByXpath(locator));
+                
                 TestContext.WriteLine("Find element" + locator.ToString() + "passed");
                 hightlightElement(e);
                 HtmlReport.Pass("Find element" + locator.ToString() + "passed");
@@ -118,6 +136,7 @@ namespace CoreFramework.DriverCore
         {
             try
             {
+                WaitForElementExists(driver, locator);
                 WaitForElementToBeClickable(driver, locator);
                 FindElementByXpath(locator).Click();
                 TestContext.WriteLine("click into element" + locator.ToString() + "passed");
@@ -131,10 +150,11 @@ namespace CoreFramework.DriverCore
             }
 
         }
-        public void SendKeys_(IWebElement e, string key)
+        public void SendKey(IWebElement e, string key)
         {
             try
             {
+                
                 e.SendKeys(key);
                 TestContext.WriteLine("SendKey into element " + e.ToString() + "passed");
                 HtmlReport.Pass("senkey into element" + e.ToString() + "passed");
@@ -151,6 +171,7 @@ namespace CoreFramework.DriverCore
         {
             try
             {
+                WaitForElementExists(driver, locator);
                 FindElementByXpath(locator).SendKeys(key);
                 TestContext.WriteLine("SendKey into element " + locator.ToString() + "passed");
                 HtmlReport.Pass("senkey into element" + locator.ToString() + "passed");
@@ -224,6 +245,11 @@ namespace CoreFramework.DriverCore
 
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOut));
             return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(locator)));
+        }
+        public void GoToURL(string url)
+        {
+            driver.Navigate().GoToUrl(url);
+            HtmlReport.Pass("Go to URL: " + url);
         }
     }
 }
