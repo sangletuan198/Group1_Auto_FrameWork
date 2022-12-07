@@ -16,7 +16,7 @@ namespace Scenario_Team1_Auto.Services
     {
         
         private string createUserPath = "/api/v1/admin/users";
-        public List<CreateUserDAO> testRecord = new List<CreateUserDAO>();
+        public List<UserDAO> testRecord = new List<UserDAO>();
         
         public APIResponse CreateNewUserRequest(string token)
         {

@@ -8,7 +8,7 @@ namespace Scenario_Team1_Auto.TestSetup
 {
     public class NashNUnitAPITestSetup : NUnitTestSetup
     {
-        public NashUserDAO user;
+        public AuthorizationDAO user;
         public NewUserDAO newUserInfo;
        
         public NashAuthorizationService nashAuthorizationService;

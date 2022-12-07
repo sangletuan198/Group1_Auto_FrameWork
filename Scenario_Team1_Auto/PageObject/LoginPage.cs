@@ -26,15 +26,15 @@ namespace Scenario_Team1_Auto.PageObject
         public void Login(string username, string password)
         {
             IsElementDisable(btnLogin);
-            SendKeys_(tfUserName, username);
-            SendKeys_(tfPassWord, password);
+            SendKey(tfUserName, username);
+            SendKey(tfPassWord, password);
             IsElementEnable(btnLogin);
             Clicks(btnLogin);
         }
         public void ChangePasswordForTheFirstTime(string newPassword)
         {
             IsElementDisable(btnSave);
-            SendKeys_(tfPasswordFirtTime, newPassword);
+            SendKey(tfPasswordFirtTime, newPassword);
             IsElementEnable(btnSave);
             Clicks(btnSave);
         }

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Scenario_Team1_Auto.DAO
 {
-    public class NashUserDAO
+    public class AuthorizationDAO
     {
         public string accessToken { get; set; }
         public string role { get; set; }
        
-        public NashUserDAO(string accessToken, string role)
+        public AuthorizationDAO(string accessToken, string role)
         {
             this.accessToken = accessToken;
             this.role = role;

@@ -28,12 +28,12 @@ namespace Scenario_Team1_Auto.Services
             return response;
         }
 
-        public NashUserDAO? Login(string  username, string password)
+        public AuthorizationDAO? Login(string  username, string password)
         {
             APIResponse response = LoginRequest(username, password);
             Assert.True(response.responseStatusCode.Equals("OK"));
 
-            NashUserDAO? user = (NashUserDAO) JsonConvert.DeserializeObject<NashUserDAO>(response.responseBody);
+            AuthorizationDAO? user = (AuthorizationDAO) JsonConvert.DeserializeObject<AuthorizationDAO>(response.responseBody);
             TestContext.WriteLine(user?.accessToken);
             return user;
         }

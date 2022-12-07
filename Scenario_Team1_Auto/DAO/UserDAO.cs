@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Scenario_Team1_Auto.DAO
 {
-    public class CreateUserDAO
+    public class UserDAO
     {
         public string birthDate { get; set; }
         public string createdAt { get; set; }
@@ -15,7 +15,7 @@ namespace Scenario_Team1_Auto.DAO
         public string lastName { get; set; }
         public string role { get; set; }
 
-        public CreateUserDAO(string birthDate, string createdAt, string firstName, string gender, string lastName, string role)
+        public UserDAO(string birthDate, string createdAt, string firstName, string gender, string lastName, string role)
         {
             this.birthDate = birthDate;
             this.createdAt = createdAt;

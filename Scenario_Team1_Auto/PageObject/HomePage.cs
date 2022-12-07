@@ -16,13 +16,13 @@ namespace Scenario_Team1_Auto.PageObject
         }
         private readonly String btnHome = "//a[@href='/home']";
         private readonly String btnHomePage = "//a[@href='/homepage']"; // homepage for staff
+
         private readonly String btnManageUser = "//a[@href='/manage-users']";
-        private readonly String btnManageAssets = "//a[@href='/manage-assets']";
+        private readonly String btnManageAssets = "//a[contains(text(),'Manage Assets')]";
         private readonly String btnManageAassignments = "//a[@href='/manage-assignments']";
-        
-        private readonly String btnConfigUser = "//div[@role='menuitem']";
-        private readonly String btnChangePassword = "//ul[@class='ant-menu ant-menu-sub ant-menu-vertical']/li[@role='menuitem'][1]";         
-        private readonly String btnLogout = "//ul[@class='ant-menu ant-menu-sub ant-menu-vertical']/li[@role='menuitem'][2]";   
+
+        private readonly String btnChangePassword = "//a[contains(text(),'Change Password')]";         
+        private readonly String btnLogout = "//a[contains(text(),'Logout')]";   
 
         private readonly String btnConfirmLogout = "//button[@class='ant-btn ant-btn-primary ant-btn-dangerous']";
 
@@ -43,14 +43,15 @@ namespace Scenario_Team1_Auto.PageObject
         }
 
         public void ChangePassword(string user,string oldPassword,string newPassword)
-        {
-            Clicks("//span[contains(text(),'"+user+"')]");
+        { 
+            string locator = "//span[contains(text(),'" + user + "')]";
+            Clicks(locator);
             Clicks(btnChangePassword);
 
             IsElementDisable(btnSave);
 
-            SendKeys_(tfOldPassword, oldPassword);
-            SendKeys_(tfNewPassword, newPassword);
+            SendKey(tfOldPassword, oldPassword);
+            SendKey(tfNewPassword, newPassword);
 
             Clicks(btnSave);
         }
@@ -60,7 +61,11 @@ namespace Scenario_Team1_Auto.PageObject
             Clicks(btnLogout);
             Clicks(btnConfirmLogout);
         }
-
+        public void GetAssetPage()
+        {
+            Clicks(btnManageAssets);
+        }
+       
         public void GetManageAassignmentsPage()
         {
             Clicks(btnManageAassignments);

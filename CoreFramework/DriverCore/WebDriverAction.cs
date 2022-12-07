@@ -10,6 +10,7 @@ namespace CoreFramework.DriverCore
     public class WebDriverAction
     {
         public IWebDriver driver;
+
         public WebDriverAction(IWebDriver driver)
         {
             this.driver = driver;
@@ -19,15 +20,17 @@ namespace CoreFramework.DriverCore
         {
             return By.XPath(locator);
         }
+
         public string getTitle()
         {
             return driver.Title;
-            
         }
+
         public string getUrl()
         {
             return driver.Url;
         }
+
         public bool IsElementDisplay(string locator)
         {
             try
@@ -52,42 +55,39 @@ namespace CoreFramework.DriverCore
                 return true;
             }
         }
+
         public IWebElement IsElementEnable(string locator)
         {
-
-
             IWebElement e =  FindElementByXpath(locator);
             if (e.Enabled)
             {
-                TestContext.WriteLine("element is enable");
+                TestContext.WriteLine("Element is enable");
             }
             else
             {
-                TestContext.WriteLine("element is disable");
+                TestContext.WriteLine("Element is disable");
             }
             return e;
          
         }
+
         public bool IsElementDisable(string locator)
         {
             IWebElement e = FindElementByXpath(locator);
             if (e.Enabled)
             {
                 return false;
-                TestContext.WriteLine("element is enable");
+                TestContext.WriteLine("Element is enable");
             }
             else
             {
-                TestContext.WriteLine("element is disable");
+                TestContext.WriteLine("Element is disable");
                 return true;
             }
-            
-
         }
 
         public IWebElement FindElementByXpath(string locator)
         {
-
             try
             {
                 WaitForElementExists(driver, locator);  
@@ -97,7 +97,6 @@ namespace CoreFramework.DriverCore
                 hightlightElement(e);
                 HtmlReport.Pass("Find element" + locator.ToString() + "passed");
                 return e;
-
             }
             catch (Exception ex)
             {
@@ -106,6 +105,7 @@ namespace CoreFramework.DriverCore
                 throw ex;
             }
         }
+
         public IList<IWebElement> FindElementsByXpath(string locator)
         {
             return driver.FindElements(ByXpath(locator));
@@ -116,6 +116,7 @@ namespace CoreFramework.DriverCore
             jse.ExecuteScript("arguments[0].style.border='2px solid red'", element);
             return element;
         }
+
         public void Click(IWebElement e)
         {
             try
@@ -132,6 +133,7 @@ namespace CoreFramework.DriverCore
                 throw ex;
             }
         }
+
         public void Clicks(string locator)
         {
             try
@@ -150,24 +152,8 @@ namespace CoreFramework.DriverCore
             }
 
         }
-        public void SendKey(IWebElement e, string key)
-        {
-            try
-            {
-                
-                e.SendKeys(key);
-                TestContext.WriteLine("SendKey into element " + e.ToString() + "passed");
-                HtmlReport.Pass("senkey into element" + e.ToString() + "passed");
-            }
-            catch (Exception ex)
-            {
-                TestContext.WriteLine("SendKey into element " + e.ToString() + "failed");
-                HtmlReport.Fail("senkey into element" + e.ToString() + "failed", TakeScreenShot());
-                throw ex;
-            }
-        }
 
-        public void SendKeys_(String locator, string key)
+        public void SendKey(String locator, string key)
         {
             try
             {
@@ -183,6 +169,7 @@ namespace CoreFramework.DriverCore
                 throw ex;
             }
         }
+
         public void Replace(String locator, string key)
         {
             try
@@ -199,15 +186,18 @@ namespace CoreFramework.DriverCore
                 throw ex;
             }
         }
+
         public void Back()
         {
             driver.Navigate().Back();
         }
+
         public String GetText(string locator)
         {
             string e = FindElementByXpath(locator).Text;
             return e;
         }
+
         public void SelectOption(String locator, String key)
         {
             try
@@ -224,6 +214,7 @@ namespace CoreFramework.DriverCore
                 HtmlReport.Fail("Select" + key.ToString() + "from" + locator.ToString() + "failed", TakeScreenShot());
             }
         }
+
         public string TakeScreenShot()
         {
             string path = HtmlReportDirectory.SCREENSHOT_PATH + ("/screenshot_" + DateTime.Now.ToString("yyyyMMddHHmmss")) + ".png";
@@ -231,21 +222,19 @@ namespace CoreFramework.DriverCore
             screenshot.SaveAsFile(path, ScreenshotImageFormat.Png);
             return path;
         }
-        //wait until clickable
 
         public IWebElement WaitForElementToBeClickable(IWebDriver driver, string locator, float timeOut = 30)
         {
-
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOut));
             return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(locator)));
         }
 
         public IWebElement WaitForElementExists(IWebDriver driver, string locator, float timeOut = 30)
         {
-
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOut));
             return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(locator)));
         }
+
         public void GoToURL(string url)
         {
             driver.Navigate().GoToUrl(url);
