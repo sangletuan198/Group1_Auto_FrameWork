@@ -38,10 +38,6 @@ namespace Scenario_Team1_Auto.TestSetup
             changePasswordFirstTimeService.ChangePasswordRequest(user.accessToken,Constant.NEW_PASSWORD);
 
             driverBaseAction.GoToURL(Constant.BASE_URL);
-
-           
-           
-
         }
 
         [TearDown]
