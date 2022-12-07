@@ -9,6 +9,12 @@
 *.user
 *.userosscache
 *.sln.docstates
+.vs/
+.vscode/
+CoreFramework/bin/
+CoreFramework/obj/
+Scenario_Team1_Auto/bin/
+Scenario_Team1_Auto/obj/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
