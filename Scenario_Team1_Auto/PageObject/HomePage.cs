@@ -20,6 +20,7 @@ namespace Scenario_Team1_Auto.PageObject
         private readonly String btnManageUser = "//a[@href='/manage-users']";
         private readonly String btnManageAssets = "//a[contains(text(),'Manage Assets')]";
         private readonly String btnManageAassignments = "//a[@href='/manage-assignments']";
+        private readonly String btnRequestFReturn = "//a[@href='/request-for-returning']";
 
         private readonly String btnChangePassword = "//a[contains(text(),'Change Password')]";         
         private readonly String btnLogout = "//a[contains(text(),'Logout')]";   
@@ -73,6 +74,10 @@ namespace Scenario_Team1_Auto.PageObject
         public void GetManageUserPage()
         {
             Clicks(btnManageUser);
+        }
+        public void GetReqForReturn()
+        {
+            Clicks(btnRequestFReturn);
         }
     }
 }

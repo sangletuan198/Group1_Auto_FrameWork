@@ -90,24 +90,26 @@ namespace CoreFramework.DriverCore
         {
             try
             {
-                WaitForElementExists(driver, locator);  
+                Thread.Sleep(2000);
+                //WaitForElementExists(driver, locator);  
                 IWebElement e = driver.FindElement(ByXpath(locator));
-                
-                TestContext.WriteLine("Find element" + locator.ToString() + "passed");
+                 
+                TestContext.WriteLine("Find element " + locator.ToString() + " passed");
                 hightlightElement(e);
-                HtmlReport.Pass("Find element" + locator.ToString() + "passed");
+                HtmlReport.Pass("Find element " + locator.ToString() + " passed");
                 return e;
             }
             catch (Exception ex)
             {
-                TestContext.WriteLine("Cannot find element" + locator.ToString());
-                HtmlReport.Fail("Cannot find element" + locator.ToString(), TakeScreenShot());
+                TestContext.WriteLine("Cannot find element " + locator.ToString());
+                HtmlReport.Fail("Cannot find element " + locator.ToString(), TakeScreenShot());
                 throw ex;
             }
         }
 
         public IList<IWebElement> FindElementsByXpath(string locator)
         {
+            Thread.Sleep(2000);
             return driver.FindElements(ByXpath(locator));
         }
         public IWebElement hightlightElement(IWebElement element)
@@ -138,8 +140,9 @@ namespace CoreFramework.DriverCore
         {
             try
             {
-                WaitForElementExists(driver, locator);
-                WaitForElementToBeClickable(driver, locator);
+                Thread.Sleep(2000);
+                //WaitForElementExists(driver, locator);
+                //WaitForElementToBeClickable(driver, locator);
                 FindElementByXpath(locator).Click();
                 TestContext.WriteLine("click into element" + locator.ToString() + "passed");
                 HtmlReport.Pass("click into element" + locator.ToString() + "passed");
@@ -152,20 +155,42 @@ namespace CoreFramework.DriverCore
             }
 
         }
+        public void ClickAndSelect(string locator, string optionLocator)
+        {
+            try
+            {
+                Thread.Sleep(2000);
+                //WaitForElementExists(driver, locator);
+                //WaitForElementToBeClickable(driver, locator);
+                Click(FindElementByXpath(locator));
+                Clicks(optionLocator);
+                TestContext.WriteLine("Select element " + locator + " successfuly with " + optionLocator);
+                HtmlReport.Pass("Select element " + locator + " successfuly with " + optionLocator);
+            }
+            catch (Exception ex)
+            {
+                TestContext.WriteLine("Fail to select element " + locator + " successfuly with " + optionLocator);
+                HtmlReport.Fail("Fail to select element " + locator + " successfuly with " + optionLocator, TakeScreenShot());
+                
+                throw ex;
+            }
+
+        }
 
         public void SendKey(String locator, string key)
         {
             try
             {
-                WaitForElementExists(driver, locator);
+                Thread.Sleep(5000);
+                //WaitForElementExists(driver, locator);
                 FindElementByXpath(locator).SendKeys(key);
                 TestContext.WriteLine("SendKey into element " + locator.ToString() + "passed");
                 HtmlReport.Pass("senkey into element" + locator.ToString() + "passed");
             }
             catch (Exception ex)
             {
-                TestContext.WriteLine("SendKey into element " + locator.ToString() + "failed");
-                HtmlReport.Fail("senkey into element" + locator.ToString() + "failed", TakeScreenShot());
+                TestContext.WriteLine("SendKey into element " + locator.ToString() + " failed");
+                HtmlReport.Fail("senkey into element " + locator.ToString() + " failed", TakeScreenShot());
                 throw ex;
             }
         }
@@ -176,13 +201,13 @@ namespace CoreFramework.DriverCore
             {
                 FindElementByXpath(locator).Clear();
                 FindElementByXpath(locator).SendKeys(key);
-                TestContext.WriteLine("Replace" + locator.ToString() + "to" + key.ToString() + "passed");
-                HtmlReport.Pass("Replace" + locator.ToString() + "to" + key.ToString() + "passed");
+                TestContext.WriteLine("Replace " + locator.ToString() + " to " + key.ToString() + " passed");
+                HtmlReport.Pass("Replace " + locator.ToString() + " to " + key.ToString() + " passed");
             }
             catch (Exception ex)
             {
-                TestContext.WriteLine("SendKey into element " + locator + "failed");
-                HtmlReport.Fail("Replace" + locator.ToString() + "to" + key.ToString() + "failed", TakeScreenShot());
+                TestContext.WriteLine("SendKey into element " + locator + " failed");
+                HtmlReport.Fail("Replace " + locator.ToString() + " to " + key.ToString() + " failed ", TakeScreenShot());
                 throw ex;
             }
         }
@@ -206,12 +231,12 @@ namespace CoreFramework.DriverCore
                 SelectElement dropdown = new SelectElement(mySelectOption);
                 dropdown.SelectByText(key);
                 TestContext.WriteLine("Select element " + locator + " successfuly with " + key);
-                HtmlReport.Pass("Select" + key.ToString() + "from" + locator.ToString() + "passed");
+                HtmlReport.Pass("Select " + key.ToString() + " from " + locator.ToString() + " passed");
             }
             catch (Exception ex)
             {
                 TestContext.WriteLine("Select element " + locator + " failed with " + key);
-                HtmlReport.Fail("Select" + key.ToString() + "from" + locator.ToString() + "failed", TakeScreenShot());
+                HtmlReport.Fail("Select " + key.ToString() + " from " + locator.ToString() + " failed ", TakeScreenShot());
             }
         }
 
@@ -223,13 +248,13 @@ namespace CoreFramework.DriverCore
             return path;
         }
 
-        public IWebElement WaitForElementToBeClickable(IWebDriver driver, string locator, float timeOut = 30)
+        public IWebElement WaitForElementToBeClickable(IWebDriver driver, string locator, float timeOut = 300)
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOut));
             return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(locator)));
         }
 
-        public IWebElement WaitForElementExists(IWebDriver driver, string locator, float timeOut = 30)
+        public IWebElement WaitForElementExists(IWebDriver driver, string locator, float timeOut = 300)
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOut));
             return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(locator)));
