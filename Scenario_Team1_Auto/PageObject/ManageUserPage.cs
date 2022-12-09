@@ -111,12 +111,21 @@ namespace Scenario_Team1_Auto.PageObject
             SendKey(inputFirstName, firstName);
             SendKey(inputLastName, lastName);
             Clicks(genderMale);
-            RemoveReadonlyAndSendKeys(inputDOB, "2000-03-21");
-            RemoveReadonlyAndSendKeys(inputJoinDate, "2022-12-08");
             Clicks(selectType);
+            Thread.Sleep(2000);
             Clicks(selectTypeStaff);
+            Clicks(inputJoinDate);
+            Thread.Sleep(2000);
+            Clicks(joinToday);
+            Thread.Sleep(2000);
+            RemoveReadonlyAndSendKeys(inputDOB, "2000-03-21");
+            //SendKey(inputJoinDate, "2022-12-08");
+            //SendKey(inputJoinDate, Keys.Enter);
+            //RemoveReadonlyAndSendKeys(inputDOB, "2000-03-21");
+            //RemoveReadonlyAndSendKeys(inputJoinDate, "2022-12-08");
             //ClickAndSelect(selectType, selectTypeStaff);
             IsElementEnable(btnSave);
+            Thread.Sleep(2000);
             Clicks(btnSave);
         }
         public void CancelCreateNewUser()
