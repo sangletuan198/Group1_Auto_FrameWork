@@ -29,14 +29,14 @@ namespace Scenario_Team1_Auto.PageObject
             SendKey(tfUserName, username);
             SendKey(tfPassWord, password);
             IsElementEnable(btnLogin);
-            Clicks(btnLogin);
+            Click(btnLogin);
         }
         public void ChangePasswordForTheFirstTime(string newPassword)
         {
             IsElementDisable(btnSave);
             SendKey(tfPasswordFirtTime, newPassword);
             IsElementEnable(btnSave);
-            Clicks(btnSave);
+            Click(btnSave);
         }
     }
 }

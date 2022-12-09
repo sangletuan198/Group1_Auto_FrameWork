@@ -45,34 +45,34 @@ namespace Scenario_Team1_Auto.PageObject
         public void ChangePassword(string user,string oldPassword,string newPassword)
         { 
             string locator = "//span[contains(text(),'" + user + "')]";
-            Clicks(locator);
-            Clicks(btnChangePassword);
+            Click(locator);
+            Click(btnChangePassword);
 
             IsElementDisable(btnSave);
 
             SendKey(tfOldPassword, oldPassword);
             SendKey(tfNewPassword, newPassword);
 
-            Clicks(btnSave);
+            Click(btnSave);
         }
         public void Logout(string user)
         {
-            Clicks("//span[contains(text(),'" + user + "')]");
-            Clicks(btnLogout);
-            Clicks(btnConfirmLogout);
+            Click("//span[contains(text(),'" + user + "')]");
+            Click(btnLogout);
+            Click(btnConfirmLogout);
         }
         public void GetAssetPage()
         {
-            Clicks(btnManageAssets);
+            Click(btnManageAssets);
         }
        
         public void GetManageAassignmentsPage()
         {
-            Clicks(btnManageAassignments);
+            Click(btnManageAassignments);
         }
         public void GetManageUserPage()
         {
-            Clicks(btnManageUser);
+            Click(btnManageUser);
         }
     }
 }

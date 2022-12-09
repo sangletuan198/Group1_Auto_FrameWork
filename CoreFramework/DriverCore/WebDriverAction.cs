@@ -94,7 +94,7 @@ namespace CoreFramework.DriverCore
                 IWebElement e = driver.FindElement(ByXpath(locator));
                 
                 TestContext.WriteLine("Find element" + locator.ToString() + "passed");
-                hightlightElement(e);
+                highlightElement(e);
                 HtmlReport.Pass("Find element" + locator.ToString() + "passed");
                 return e;
             }
@@ -110,7 +110,7 @@ namespace CoreFramework.DriverCore
         {
             return driver.FindElements(ByXpath(locator));
         }
-        public IWebElement hightlightElement(IWebElement element)
+        public IWebElement highlightElement(IWebElement element)
         {
             IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
             jse.ExecuteScript("arguments[0].style.border='2px solid red'", element);
@@ -121,7 +121,8 @@ namespace CoreFramework.DriverCore
         {
             try
             {
-                hightlightElement(e);
+                WaitForElementToBeClickable(driver, e);
+                highlightElement(e);
                 e.Click();
                 TestContext.WriteLine("click into element" + e.ToString() + "passed");
                 HtmlReport.Pass("click into element" + e.ToString() + "passed");
@@ -133,11 +134,21 @@ namespace CoreFramework.DriverCore
                 throw ex;
             }
         }
-
-        public void Clicks(string locator)
+        public By ByID(string locator)
+        {
+            return By.Id(locator);
+        }
+        public IWebElement FindElementByID(string locator)
+        {
+            IWebElement e = driver.FindElement(ByID(locator));
+            highlightElement(e);
+            return e;
+        }
+        public void Click(string locator)
         {
             try
             {
+                
                 WaitForElementExists(driver, locator);
                 WaitForElementToBeClickable(driver, locator);
                 FindElementByXpath(locator).Click();
@@ -151,6 +162,37 @@ namespace CoreFramework.DriverCore
                 throw ex;
             }
 
+        }
+        public void ClickByID(String locator)
+        {
+            try
+            {
+                FindElementByID(locator).Click();
+                TestContext.WriteLine("Click into element " + locator + " successfuly");
+                HtmlReport.Pass("Click into element " + locator + " successfuly");
+            }
+            catch (Exception ex)
+            {
+                TestContext.WriteLine("Click into element " + locator + " failed");
+                HtmlReport.Fail("Click into element " + locator + " failed", TakeScreenShot());
+                throw ex;
+            }
+        }
+        public void SendKeysByID(string locator, string key)
+        {
+            try
+            {
+                FindElementByID(locator).SendKeys(key)
+;
+                TestContext.WriteLine("Sendkey into element " + locator + " successfuly");
+                HtmlReport.Pass("Sendkey into element " + locator + " successfuly");
+            }
+            catch (Exception ex)
+            {
+                TestContext.WriteLine("Sendkey into element " + locator + " failed");
+                HtmlReport.Fail("Sendkey into element " + locator + " failed", TakeScreenShot());
+                throw ex;
+            }
         }
 
         public void SendKey(String locator, string key)
@@ -223,22 +265,47 @@ namespace CoreFramework.DriverCore
             return path;
         }
 
-        public IWebElement WaitForElementToBeClickable(IWebDriver driver, string locator, float timeOut = 30)
+        public IWebElement WaitForElementToBeClickable(IWebDriver driver, string locator, float timeOut = 10)
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOut));
             return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(locator)));
         }
-
-        public IWebElement WaitForElementExists(IWebDriver driver, string locator, float timeOut = 30)
+        public IWebElement WaitForElementToBeClickable(IWebDriver driver, IWebElement e, float timeOut = 10)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOut));
+            return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(e));
+        }
+        public IWebElement WaitForElementExists(IWebDriver driver, string locator, float timeOut = 10)
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOut));
             return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(locator)));
+        }
+        public bool WaitForElementSelectable(IWebDriver driver, string locator, float timeOut = 10)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOut));
+            return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeSelected(By.XPath(locator)));
         }
 
         public void GoToURL(string url)
         {
             driver.Navigate().GoToUrl(url);
             HtmlReport.Pass("Go to URL: " + url);
+        }
+        public void ClickAndSelect(string locator, string optionLocator)
+        {
+            Click(FindElementByXpath(locator));
+            Click(FindElementByXpath(optionLocator));
+            TestContext.WriteLine("Select element " + locator + " successfuly with " + optionLocator);
+            HtmlReport.Pass("Select element " + locator + " successfuly with " + optionLocator);
+        }
+        public void RemoveReadonlyAndSendKeys(string locator, string key)
+        {
+            Click(locator);
+            IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
+            jse.ExecuteScript("arguments[0].removeAttribute('readonly')", WaitForElementToBeClickable(driver,locator,5));
+            //driver.execute_script("arguments[0].removeAttribute('readonly')", WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//input[@class='ivu-input' and @placeholder='Select Date and Time']"))))
+            SendKey(locator, key);
+            SendKey(locator, Keys.Enter);
         }
     }
 }
