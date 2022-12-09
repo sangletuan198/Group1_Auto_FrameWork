@@ -22,7 +22,7 @@ namespace Scenario_Team1_Auto.PageObject
         private readonly string tableUser = "//div[@class='ant-table']";
         private readonly string rowUser = "//td[@class='ant-table-cell'][1]";
         private readonly string detailUser = "//div[@class='ant-modal-content']";
-        private readonly string findByType = "//input[@id='rc_select_6']";
+        private readonly string findByType = "//input[@class='ant-select-selection-search-input']";
         private readonly string typeAdmin = "//div[@title='Admin']";
         private readonly string displayType = "//td[text()='ADMIN']";
         private readonly string findByText = "//input[@placeholder='Search']";
@@ -91,6 +91,7 @@ namespace Scenario_Team1_Auto.PageObject
         {
             IsElementDisplay(findByType);
             //ClickAndSelect(findByType, typeAdmin);
+            Thread.Sleep(2000);
             Clicks(findByType);
             Clicks(typeAdmin);
             IsElementNotDisplay("STAFF");
