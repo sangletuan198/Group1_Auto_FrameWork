@@ -117,7 +117,7 @@ namespace CoreFramework.DriverCore
             return element;
         }
 
-        public void Click(IWebElement e)
+        public void Clicks(IWebElement e)
         {
             try
             {
@@ -239,6 +239,67 @@ namespace CoreFramework.DriverCore
         {
             driver.Navigate().GoToUrl(url);
             HtmlReport.Pass("Go to URL: " + url);
+        }
+
+        public void ClickAndSelect(string locator, string optionLocator)
+        {
+            Clicks(FindElementByXpath(locator));
+            Clicks(optionLocator);
+            TestContext.WriteLine("Select element " + locator + " successfuly with " + optionLocator);
+            HtmlReport.Pass("Select element " + locator + " successfuly with " + optionLocator);
+        }
+        public By ByID(string locator)
+        {
+            return By.Id(locator);
+        }
+
+        public void ClickByID(String locator)
+        {
+            try
+            {
+                FindElementByID(locator).Click();
+                TestContext.WriteLine("Click into element " + locator + " successfuly");
+                HtmlReport.Pass("Click into element " + locator + " successfuly");
+            }
+            catch (Exception ex)
+            {
+                TestContext.WriteLine("Click into element " + locator + " failed");
+                HtmlReport.Fail("Click into element " + locator + " failed", TakeScreenShot());
+                throw ex;
+            }
+        }
+
+        public void SendKeysByID(string locator, string key)
+        {
+            try
+            {
+                FindElementByID(locator).SendKeys(key)
+;
+                TestContext.WriteLine("Sendkey into element " + locator + " successfuly");
+                HtmlReport.Pass("Sendkey into element " + locator + " successfuly");
+            }
+            catch (Exception ex)
+            {
+                TestContext.WriteLine("Sendkey into element " + locator + " failed");
+                HtmlReport.Fail("Sendkey into element " + locator + " failed", TakeScreenShot());
+                throw ex;
+            }
+        }
+
+        public IWebElement FindElementByID(string locator)
+        {
+            IWebElement e = driver.FindElement(ByID(locator));
+            hightlightElement(e);
+            return e;
+        }
+
+        public void RemoveReadonlyAndSendKeysAssignDate(string locator, string key)
+        {
+            ClickByID(locator);
+            IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
+            jse.ExecuteScript("document.getElementById('" + locator + "').removeAttribute('readonly',0);");
+            SendKeysByID(locator, key);
+            SendKeysByID(locator, Keys.Enter);
         }
     }
 }
