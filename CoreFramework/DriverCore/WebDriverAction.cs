@@ -135,7 +135,16 @@ namespace CoreFramework.DriverCore
                 throw ex;
             }
         }
-
+        public By ByID(string locator)
+        {
+            return By.Id(locator);
+        }
+        public IWebElement FindElementByID(string locator)
+        {
+            IWebElement e = driver.FindElement(ByID(locator));
+            hightlightElement(e);
+            return e;
+        }
         public void Clicks(string locator)
         {
             try
@@ -176,7 +185,37 @@ namespace CoreFramework.DriverCore
             }
 
         }
-
+        public void ClickByID(String locator)
+        {
+            try
+            {
+                FindElementByID(locator).Click();
+                TestContext.WriteLine("Click into element " + locator + " successfuly");
+                HtmlReport.Pass("Click into element " + locator + " successfuly");
+            }
+            catch (Exception ex)
+            {
+                TestContext.WriteLine("Click into element " + locator + " failed");
+                HtmlReport.Fail("Click into element " + locator + " failed", TakeScreenShot());
+                throw ex;
+            }
+        }
+        public void SendKeysByID(string locator, string key)
+        {
+            try
+            {
+                FindElementByID(locator).SendKeys(key)
+;
+                TestContext.WriteLine("Sendkey into element " + locator + " successfuly");
+                HtmlReport.Pass("Sendkey into element " + locator + " successfuly");
+            }
+            catch (Exception ex)
+            {
+                TestContext.WriteLine("Sendkey into element " + locator + " failed");
+                HtmlReport.Fail("Sendkey into element " + locator + " failed", TakeScreenShot());
+                throw ex;
+            }
+        }
         public void SendKey(String locator, string key)
         {
             try
@@ -264,6 +303,15 @@ namespace CoreFramework.DriverCore
         {
             driver.Navigate().GoToUrl(url);
             HtmlReport.Pass("Go to URL: " + url);
+        }
+        public void RemoveReadonlyAndSendKeys(string locator, string key)
+        {
+            Clicks(locator);
+            IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
+            jse.ExecuteScript("arguments[0].removeAttribute('readonly')", WaitForElementToBeClickable(driver, locator, 5));
+            //driver.execute_script("arguments[0].removeAttribute('readonly')", WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//input[@class='ivu-input' and @placeholder='Select Date and Time']"))))
+            SendKey(locator, key);
+            SendKey(locator, Keys.Enter);
         }
     }
 }

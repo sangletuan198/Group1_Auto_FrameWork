@@ -36,7 +36,8 @@ namespace Scenario_Team1_Auto.PageObject
         private readonly string genderMale = "//input[@value='MALE']";
         private readonly string genderFemale = "//input[@value='FEMALE']";
         private readonly string inputJoinDate = "//input[@id='create-new-user_joinedDate']";
-        private readonly string selectType = "//input[@id='rc_select_14']";
+        private readonly string joinToday = "//a[@class='ant-picker-today-btn']";
+        private readonly string selectType = "//div[@class='ant-select ant-select-in-form-item ant-select-single ant-select-show-arrow']";
         private readonly string selectTypeAdmin = "//div[text()='Admin']";
         private readonly string selectTypeStaff = "//div[text()='Staff']";
         private readonly string btnSave = "//span[contains(text(),'Save')]";
@@ -53,7 +54,7 @@ namespace Scenario_Team1_Auto.PageObject
         private readonly string typeStaff = "//div[text()='Staff']";
         private readonly string btnSaveEdit = "//span[contains(text(),'Save')]";
 
-        private readonly string btnDelete = "//span[@aria-label='close-circle']";
+        private readonly string btnDelete = "(//span[@aria-label='close-circle'])[2]";
         private readonly string btnConfirmDel = "//span[text()='Delete']";
         public void VerifyManageUserPageDisplay()
         {
@@ -110,10 +111,10 @@ namespace Scenario_Team1_Auto.PageObject
             SendKey(inputFirstName, firstName);
             SendKey(inputLastName, lastName);
             Clicks(genderMale);
+            RemoveReadonlyAndSendKeys(inputDOB, "2000-03-21");
+            RemoveReadonlyAndSendKeys(inputJoinDate, "2022-12-08");
             Clicks(selectType);
             Clicks(selectTypeStaff);
-            SendKey(inputDOB, dateOfBirth);
-            SendKey(inputJoinDate, joinDate);
             //ClickAndSelect(selectType, selectTypeStaff);
             IsElementEnable(btnSave);
             Clicks(btnSave);
@@ -137,8 +138,10 @@ namespace Scenario_Team1_Auto.PageObject
         public void DeleteUser()
         {
             IsElementDisplay(btnDelete);
+            Thread.Sleep(2000);
             Clicks(btnDelete);
             IsElementDisplay(btnConfirmDel);
+            Thread.Sleep(2000);
             Clicks(btnConfirmDel);
         }
     }

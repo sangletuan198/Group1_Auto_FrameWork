@@ -36,6 +36,7 @@ namespace Scenario_Team1_Auto.TestCase
 
             loginPage.Login(newUserInfo.username, Constant.NEW_PASSWORD);
             homePage.GetManageUserPage();
+            Thread.Sleep(2000);
             managaUserPage.SearchByTypeAdmin();
         }
         [Test]

@@ -22,7 +22,7 @@ namespace Scenario_Team1_Auto.TestCase
 
             loginPage.Login(newUserInfo.username, Constant.NEW_PASSWORD);
 
-            homePage.GetManageUserPage();
+            homePage.GetReqForReturn();
 
             requestPage.ViewPage();
         }
@@ -36,7 +36,7 @@ namespace Scenario_Team1_Auto.TestCase
 
             loginPage.Login(newUserInfo.username, Constant.NEW_PASSWORD);
 
-            homePage.GetManageUserPage();
+            homePage.GetReqForReturn();
 
             requestPage.SearchByStateComplete();
         }
@@ -50,7 +50,7 @@ namespace Scenario_Team1_Auto.TestCase
 
             loginPage.Login(newUserInfo.username, Constant.NEW_PASSWORD);
 
-            homePage.GetManageUserPage();
+            homePage.GetReqForReturn();
 
             requestPage.SearchByText();
         }
@@ -64,7 +64,7 @@ namespace Scenario_Team1_Auto.TestCase
 
             loginPage.Login(newUserInfo.username, Constant.NEW_PASSWORD);
 
-            homePage.GetManageUserPage();
+            homePage.GetReqForReturn();
 
             requestPage.CompleteRequest();
         }
