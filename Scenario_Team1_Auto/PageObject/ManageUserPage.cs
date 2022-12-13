@@ -23,9 +23,11 @@ namespace Scenario_Team1_Auto.PageObject
         private readonly string rowUser = "//td[@class='ant-table-cell'][1]";
         private readonly string detailUser = "//div[@class='ant-modal-content']";
         private readonly string closeViewDetail = "//span[@aria-label='close']";
+
         private readonly string findByType = "//input[@class='ant-select-selection-search-input']";
         private readonly string typeAdmin = "//div[@title='Admin']";
         private readonly string displayType = "//td[text()='ADMIN']";
+
         private readonly string searchBox = "//input[@placeholder='Search']";
         private readonly string txtFullname = "Vang Do Van";
         private readonly string txtStaffCode = "SD0002";
@@ -33,6 +35,7 @@ namespace Scenario_Team1_Auto.PageObject
         private readonly string btnSearch = "//button[@class='ant-btn ant-btn-default ant-btn-icon-only ant-input-search-button']";
         private readonly string resultFullname = "//td[text()='Vang Do Van']";
         private readonly string resultStaffcode = "//td[text()='SD0002']";
+
         private readonly string btnCreate = "//button[@class='ant-btn ant-btn-default ant-btn-dangerous']//span[text()='Create new user']";
         private readonly string inputFirstName = "//input[@placeholder='First Name']";
         private readonly string inputLastName = "//input[@placeholder='Last Name']";
@@ -46,7 +49,7 @@ namespace Scenario_Team1_Auto.PageObject
         private readonly string selectTypeStaff = "//div[text()='Staff']";
         private readonly string btnSave = "//span[contains(text(),'Save')]";
         private readonly string btnCancel = "//span[contains(text(),'Cancel')]";
-        private readonly string firstName = "Tus";
+        private readonly string firstName = "Tu";
         private readonly string lastName = "Nguyen";
 
         private readonly string btnEdit = "//span[@aria-label='edit']";
@@ -94,13 +97,6 @@ namespace Scenario_Team1_Auto.PageObject
             Click(btnSearch);
             IsElementDisplay(resultStaffcode);
         }
-        public void SearchByStaffcode()
-        {
-            IsElementDisplay(searchBox);
-            SendKey(searchBox, txtStaffCode);
-            Click(btnSearch);
-            IsElementDisplay(resultStaffcode);
-        }
         public void CreateNewUser()
         {
             Click(btnCreate);
@@ -132,7 +128,7 @@ namespace Scenario_Team1_Auto.PageObject
             IsElementDisplay(btnEdit);
             Click(btnEdit);
             Thread.Sleep(2000);
-            RemoveReadonlyAndSendKeys(inputDOB, "2000-04-21");
+            RemoveReadonlyAndSendKeys(inputDOB, "1999-03-21");
             IsElementDisplay(btnSaveEdit);
             Click(btnSaveEdit);
         }

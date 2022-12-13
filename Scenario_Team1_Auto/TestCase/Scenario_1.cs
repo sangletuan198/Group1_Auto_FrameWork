@@ -23,23 +23,28 @@ namespace Scenario_Team1_Auto.TestCase
             ManageAssetPage manageAsset = new ManageAssetPage(_driver);
             ManageAssignmentsPage manageAssignment = new ManageAssignmentsPage(_driver);
             
-            //admin login & view home page
+            //1. admin login & view home page
             login.Login(Constant.ADMIN_USERNAME, Constant.ADMIN_PASSWORD);
             string title = _driver.Url;
             Assert.AreEqual("http://18.141.229.145/home", title);
-            homePage.VerifyAdminAssignList();
+            //homePage.VerifyAdminAssignList();
 
-            //admin manage user page
-            homePage.GetManageUserPage();
-            manageUser.ViewUserPage();      //admin view userlist
-            manageUser.SearchByText();      //admin search by fullname, staffcode
-            manageUser.SearchByType();    
-            manageUser.CreateNewUser();     
-            manageUser.EditUser();
-            manageUser.DeleteUser();
+            //2. admin manage user page
+//            homePage.GetManageUserPage();
+//            manageUser.ViewUserPage();      //admin view userlist
+//            manageUser.SearchByText();      //admin search by fullname, staffcode
+//            manageUser.SearchByType();    
+//            manageUser.CreateNewUser();     
+//            manageUser.EditUser();
+//            manageUser.DeleteUser();
 
-            //admin view manage asset page
+            //3. admin view manage asset page
             homePage.GetAssetPage();
+            manageAsset.ViewAssetPage();
+            manageAsset.SearchByText();
+            //manageAsset.SearchByState();
+            //manageAsset.SearchByCategories();
+            manageAsset.CreateNewAsset();
 
         }
         

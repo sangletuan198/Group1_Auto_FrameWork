@@ -1,5 +1,6 @@
 ﻿using CoreFramework.DriverCore;
 using OpenQA.Selenium;
+using Scenario_Team1_Auto.TestData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,31 @@ namespace Scenario_Team1_Auto.PageObject.ManageAsset
         {
         }
         private readonly String pageTitle = "//div[text()='Manage Assets']";
-        private readonly String tableAsset = "";
-        private readonly String rowAsset = "";
-        private readonly String detailAsset = "";
-        private readonly String closeViewDetail = "";
+        private readonly String tableAsset = "//div[@class='ant-table']";
+        private readonly String rowAsset = "//tr[@class='ant-table-row ant-table-row-level-0']";
+        private readonly String detailAsset = "//div[@class='ant-modal-content']";
+        private readonly String closeViewDetail = "//span[@aria-label='close']";
+
+        private readonly String searchBox = "//input[@placeholder='Search']";
+        private readonly String btnSearch = "//button[@class='ant-btn ant-btn-default ant-btn-icon-only ant-input-search-button']";
+        private readonly String txtAssetName = "MacBook Air M1MacBook Air M1 New";
+        private readonly String resultAssetName = "//td[text()='MacBook Air M1MacBook Air M1 New']";
+
+        private readonly String searchState= "//span[text()='State']";
+        private readonly String stateAvailble= "//div[text()='AVAILABLE' and @class='ant-select-item-option-content']";
+
+        private readonly String searchCategory= "//span[text()='Categories']";
+        private readonly String categoryLaptop= "//div[text()='Laptop' and @class='ant-select-item-option-content']";
+
+        private readonly String btnCreateNewAsset = "//span[text()='Create new asset']";
+        private readonly String inputName= "//input[@placeholder='Asset Name']";
+        private readonly String inputSpeci= "//textarea[@placeholder='Specifications']";
+        private readonly String inputCat= "//input[@id='create-new-asset_category']";
+        private readonly String catLaptop= "//div[@title='Laptop']";
+        private readonly String inputDate= "//input[@id='create-new-asset_installed_date']";
+        private readonly String dateToday = "//a[@class='ant-picker-today-btn']";
+        private readonly String btnSave = "//span[text()='Save']";
+
         private readonly string listAsset = "//tr[@class='ant-table-row ant-table-row-level-0']";
         private readonly String btnCreateAssets = "//button[@class='ant-btn ant-btn-default ant-btn-dangerous']";
 
@@ -29,6 +51,42 @@ namespace Scenario_Team1_Auto.PageObject.ManageAsset
             IsElementDisplay(detailAsset);
             Click(closeViewDetail);
         }
+        public void SearchByText()
+        {
+            IsElementDisplay(searchBox);
+            SendKey(searchBox, txtAssetName);
+            Click(btnSearch);
+            IsElementDisplay(resultAssetName);
+        }
+        public void SearchByState()
+        {
+            IsElementDisplay(searchState);
+            Click(searchState);
+            Thread.Sleep(2000);
+            Click(stateAvailble);
+            IsElementDisplay("AVAILABLE");
+        }
+        public void SearchByCategories()
+        {
+            IsElementDisplay(searchCategory);
+            Thread.Sleep(2000);
+            Click(searchCategory);
+            Click(categoryLaptop);
+            IsElementDisplay("Laptop");
+        }
+
+        public void CreateNewAsset()
+        {
+            Click(btnCreateNewAsset);
+            SendKey(inputName, Asset.AssetName);
+            SendKey(inputSpeci, Asset.AssetSpecification);
+            Click(inputCat);
+            Click(catLaptop);
+            Click(inputDate);
+            Click(dateToday);
+            Click(btnSave);
+        }
+
         public void GetCreateAssetPage()
         {
             Click(btnCreateAssets);
