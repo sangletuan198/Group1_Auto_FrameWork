@@ -36,10 +36,14 @@ namespace CoreFramework.DriverCore
             try
             {
                 FindElementByXpath(locator);
+                TestContext.WriteLine("Selected element " + locator + " is displayed");
+                HtmlReport.Pass("Selected element " + locator + " is displayed");
                 return true;
             }
             catch (NoSuchElementException)
             {
+                TestContext.WriteLine("Selected element " + locator + " is NOT displayed");
+                HtmlReport.Fail("Selected element " + locator + " is NOT displayed", TakeScreenShot());
                 return false;
             }
         }
@@ -48,26 +52,33 @@ namespace CoreFramework.DriverCore
             try
             {
               IsElementDisplay(locator);
+                TestContext.WriteLine("Selected element " + locator + " is not displayed");
+                HtmlReport.Pass("Selected element " + locator + " is not displayed");
                 return false;
             }
             catch(Exception ex)
             {
+                TestContext.WriteLine("Selected element " + locator + " is still displayed");
+                HtmlReport.Fail("Selected element " + locator + " is still displayed", TakeScreenShot());
                 return true;
             }
         }
 
-        public IWebElement IsElementEnable(string locator)
+        public bool IsElementEnable(string locator)
         {
             IWebElement e =  FindElementByXpath(locator);
             if (e.Enabled)
             {
-                TestContext.WriteLine("Element is enable");
+                TestContext.WriteLine("Selected element " + locator + " is enable");
+                HtmlReport.Pass("Selected element " + locator + " is enable");
+                return true;
             }
             else
             {
-                TestContext.WriteLine("Element is disable");
+                TestContext.WriteLine("Selected element " + locator + " is NOT enable");
+                HtmlReport.Fail("Selected element " + locator + " is NOT enable", TakeScreenShot());
+                return false;
             }
-            return e;
          
         }
 
@@ -76,12 +87,14 @@ namespace CoreFramework.DriverCore
             IWebElement e = FindElementByXpath(locator);
             if (e.Enabled)
             {
+                TestContext.WriteLine("Selected element " + locator + " is disable");
+                HtmlReport.Fail("Selected element " + locator + " is disable", TakeScreenShot());
                 return false;
-                TestContext.WriteLine("Element is enable");
             }
             else
             {
-                TestContext.WriteLine("Element is disable");
+                TestContext.WriteLine("Selected element " + locator + " is still enable");
+                HtmlReport.Fail("Selected element " + locator + " is still enable", TakeScreenShot());
                 return true;
             }
         }
@@ -135,17 +148,8 @@ namespace CoreFramework.DriverCore
                 throw ex;
             }
         }
-        public By ByID(string locator)
-        {
-            return By.Id(locator);
-        }
-        public IWebElement FindElementByID(string locator)
-        {
-            IWebElement e = driver.FindElement(ByID(locator));
-            hightlightElement(e);
-            return e;
-        }
-        public void Clicks(string locator)
+        
+        public void Click(string locator)
         {
             try
             {
@@ -169,10 +173,8 @@ namespace CoreFramework.DriverCore
             try
             {
                 Thread.Sleep(2000);
-                //WaitForElementExists(driver, locator);
-                //WaitForElementToBeClickable(driver, locator);
                 Click(FindElementByXpath(locator));
-                Clicks(optionLocator);
+                Click(optionLocator);
                 TestContext.WriteLine("Select element " + locator + " successfuly with " + optionLocator);
                 HtmlReport.Pass("Select element " + locator + " successfuly with " + optionLocator);
             }
@@ -185,37 +187,7 @@ namespace CoreFramework.DriverCore
             }
 
         }
-        public void ClickByID(String locator)
-        {
-            try
-            {
-                FindElementByID(locator).Click();
-                TestContext.WriteLine("Click into element " + locator + " successfuly");
-                HtmlReport.Pass("Click into element " + locator + " successfuly");
-            }
-            catch (Exception ex)
-            {
-                TestContext.WriteLine("Click into element " + locator + " failed");
-                HtmlReport.Fail("Click into element " + locator + " failed", TakeScreenShot());
-                throw ex;
-            }
-        }
-        public void SendKeysByID(string locator, string key)
-        {
-            try
-            {
-                FindElementByID(locator).SendKeys(key)
-;
-                TestContext.WriteLine("Sendkey into element " + locator + " successfuly");
-                HtmlReport.Pass("Sendkey into element " + locator + " successfuly");
-            }
-            catch (Exception ex)
-            {
-                TestContext.WriteLine("Sendkey into element " + locator + " failed");
-                HtmlReport.Fail("Sendkey into element " + locator + " failed", TakeScreenShot());
-                throw ex;
-            }
-        }
+        
         public void SendKey(String locator, string key)
         {
             try
@@ -249,6 +221,10 @@ namespace CoreFramework.DriverCore
                 HtmlReport.Fail("Replace " + locator.ToString() + " to " + key.ToString() + " failed ", TakeScreenShot());
                 throw ex;
             }
+        }
+        public void Clear(String locator)
+        {
+            FindElementByXpath(locator).Clear();
         }
 
         public void Back()
@@ -306,12 +282,22 @@ namespace CoreFramework.DriverCore
         }
         public void RemoveReadonlyAndSendKeys(string locator, string key)
         {
-            Clicks(locator);
-            IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
-            jse.ExecuteScript("arguments[0].removeAttribute('readonly')", WaitForElementToBeClickable(driver, locator, 5));
-            //driver.execute_script("arguments[0].removeAttribute('readonly')", WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//input[@class='ivu-input' and @placeholder='Select Date and Time']"))))
-            SendKey(locator, key);
-            SendKey(locator, Keys.Enter);
+            try
+            {
+                Click(locator);
+                IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
+                jse.ExecuteScript("arguments[0].removeAttribute('readonly')", WaitForElementToBeClickable(driver, locator, 5));
+                //driver.execute_script("arguments[0].removeAttribute('readonly')", WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//input[@class='ivu-input' and @placeholder='Select Date and Time']"))))
+                SendKey(locator, key);
+                SendKey(locator, Keys.Enter);
+                TestContext.WriteLine("Remove and sendkey into " + locator + " successfully");
+                HtmlReport.Pass("Remove and sendkey into " + locator + " successfully");
+            } catch
+            {
+                TestContext.WriteLine("Fail to remove and sendkey " +key+ " into " + locator);
+                HtmlReport.Fail("Fail to remove and sendkey " +key+ " into "+ locator, TakeScreenShot());
+            }
+            
         }
     }
 }

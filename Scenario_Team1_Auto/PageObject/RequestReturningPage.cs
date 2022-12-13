@@ -36,8 +36,8 @@ namespace Scenario_Team1_Auto.PageObject
             IsElementDisplay(findByState);
             //ClickAndSelect(findByType, typeAdmin);
             Thread.Sleep(2000);
-            Clicks(findByState);
-            Clicks(stateComplete);
+            Click(findByState);
+            Click(stateComplete);
             IsElementNotDisplay("WAITING_FOR_RETURNING");
         }
         public void SearchByStateWaiting()
@@ -45,22 +45,22 @@ namespace Scenario_Team1_Auto.PageObject
             IsElementDisplay(findByState);
             //ClickAndSelect(findByType, typeAdmin);
             Thread.Sleep(2000);
-            Clicks(findByState);
-            Clicks(stateWaiting);
+            Click(findByState);
+            Click(stateWaiting);
         }
         public void SearchByText()
         {
             IsElementDisplay(findByText);
             SendKey(findByText, text);
-            Clicks(btnSearch);
+            Click(btnSearch);
             IsElementNotDisplay(foundText);
         }
         public void CompleteRequest()
         {
             SearchByStateWaiting();
             IsElementEnable(btnComplete);
-            Clicks(btnComplete);
-            Clicks(btnYes);
+            Click(btnComplete);
+            Click(btnYes);
         }
 
     }

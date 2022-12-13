@@ -27,7 +27,7 @@ namespace Scenario_Team1_Auto.TestCase
             managaUserPage.ViewUserPage();
         }
         [Test]
-        public void SearchByTypeAdmin() // search user with type as admin
+        public void SearchByType() 
         {
 
             HomePage homePage = new HomePage(_driver);
@@ -37,10 +37,10 @@ namespace Scenario_Team1_Auto.TestCase
             loginPage.Login(newUserInfo.username, Constant.NEW_PASSWORD);
             homePage.GetManageUserPage();
             Thread.Sleep(2000);
-            managaUserPage.SearchByTypeAdmin();
+            managaUserPage.SearchByType(); // search user with type as admin
         }
         [Test]
-        public void SearchByTextFullname() // search user with fullname
+        public void SearchByText() 
         {
 
             HomePage homePage = new HomePage(_driver);
@@ -49,7 +49,7 @@ namespace Scenario_Team1_Auto.TestCase
 
             loginPage.Login(newUserInfo.username, Constant.NEW_PASSWORD);
             homePage.GetManageUserPage();
-            managaUserPage.SearchByText();
+            managaUserPage.SearchByText(); // search user with fullname
         }
         [Test]
         public void CreateNewUser() //create new User
@@ -76,7 +76,7 @@ namespace Scenario_Team1_Auto.TestCase
             managaUserPage.CancelCreateNewUser();
         }
         [Test]
-        public void EditUser() // delete user 
+        public void EditUser() // user 
         {
 
             HomePage homePage = new HomePage(_driver);
