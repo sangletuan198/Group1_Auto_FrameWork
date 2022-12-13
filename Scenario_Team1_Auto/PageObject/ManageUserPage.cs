@@ -1,12 +1,6 @@
 ﻿using CoreFramework.DriverCore;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Scenario_Team1_Auto.TestData;
 
 namespace Scenario_Team1_Auto.PageObject
 {
@@ -26,7 +20,6 @@ namespace Scenario_Team1_Auto.PageObject
 
         private readonly string findByType = "//input[@class='ant-select-selection-search-input']";
         private readonly string typeAdmin = "//div[@title='Admin']";
-        private readonly string displayType = "//td[text()='ADMIN']";
 
         private readonly string searchBox = "//input[@placeholder='Search']";
         private readonly string txtFullname = "Vang Do Van";
@@ -41,22 +34,14 @@ namespace Scenario_Team1_Auto.PageObject
         private readonly string inputLastName = "//input[@placeholder='Last Name']";
         private readonly string inputDOB = "//input[@id='create-new-user_birthday']";
         private readonly string genderMale = "//input[@value='MALE']";
-        private readonly string genderFemale = "//input[@value='FEMALE']";
         private readonly string inputJoinDate = "//input[@id='create-new-user_joinedDate']";
         private readonly string joinToday = "//a[@class='ant-picker-today-btn']";
         private readonly string selectType = "//div[@class='ant-select ant-select-in-form-item ant-select-single ant-select-show-arrow']";
-        private readonly string selectTypeAdmin = "//div[text()='Admin']";
         private readonly string selectTypeStaff = "//div[text()='Staff']";
         private readonly string btnSave = "//span[contains(text(),'Save')]";
         private readonly string btnCancel = "//span[contains(text(),'Cancel')]";
-        private readonly string firstName = "Tu";
-        private readonly string lastName = "Nguyen";
 
         private readonly string btnEdit = "//span[@aria-label='edit']";
-        private readonly string edtDoB = "//input[@id='edit-asset_birthDate']";
-        private readonly string edtJoinDate = "//input[@id='edit-asset_joinedDate']";
-        private readonly string dropType = "//span[@aria-label='down']";
-        private readonly string typeStaff = "//div[text()='Staff']";
         private readonly string btnSaveEdit = "//span[contains(text(),'Save')]";
 
         private readonly string btnDelete = "(//span[@aria-label='close-circle'])[2]";
@@ -101,8 +86,8 @@ namespace Scenario_Team1_Auto.PageObject
         {
             Click(btnCreate);
             IsElementDisable(btnSave);
-            SendKey(inputFirstName, firstName);
-            SendKey(inputLastName, lastName);
+            SendKey(inputFirstName, User.FirstName);
+            SendKey(inputLastName, User.LastName);
             Click(genderMale);
             Click(selectType);
             Thread.Sleep(2000);
@@ -111,7 +96,7 @@ namespace Scenario_Team1_Auto.PageObject
             Thread.Sleep(2000);
             Click(joinToday);
             Thread.Sleep(2000);
-            RemoveReadonlyAndSendKeys(inputDOB, "2000-03-21");
+            RemoveReadonlyAndSendKeys(inputDOB, User.DoB);
             IsElementEnable(btnSave);
             Thread.Sleep(2000);
             Click(btnSave);
@@ -128,7 +113,7 @@ namespace Scenario_Team1_Auto.PageObject
             IsElementDisplay(btnEdit);
             Click(btnEdit);
             Thread.Sleep(2000);
-            RemoveReadonlyAndSendKeys(inputDOB, "1999-03-21");
+            RemoveReadonlyAndSendKeys(inputDOB, User.EditDoB);
             IsElementDisplay(btnSaveEdit);
             Click(btnSaveEdit);
         }

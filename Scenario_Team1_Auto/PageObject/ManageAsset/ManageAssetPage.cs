@@ -22,14 +22,13 @@ namespace Scenario_Team1_Auto.PageObject.ManageAsset
 
         private readonly String searchBox = "//input[@placeholder='Search']";
         private readonly String btnSearch = "//button[@class='ant-btn ant-btn-default ant-btn-icon-only ant-input-search-button']";
-        private readonly String txtAssetName = "MacBook Air M1MacBook Air M1 New";
         private readonly String resultAssetName = "//td[text()='MacBook Air M1MacBook Air M1 New']";
 
-        private readonly String searchState= "//span[text()='State']";
-        private readonly String stateAvailble= "//div[text()='AVAILABLE' and @class='ant-select-item-option-content']";
+        private readonly String searchState= "//div[@class='ant-space-item'][1]";
+        private readonly String stateAvailble= "//div[text()='Available' and @class='ant-select-item-option-content']";
 
-        private readonly String searchCategory= "//span[text()='Categories']";
-        private readonly String categoryLaptop= "//div[text()='Laptop' and @class='ant-select-item-option-content']";
+        private readonly String searchCategory = "//div[@class='ant-space-item'][2]";
+        private readonly String categoryLaptop= "//div[text()='Monitor' and @class='ant-select-item-option-content']";
 
         private readonly String btnCreateNewAsset = "//span[text()='Create new asset']";
         private readonly String inputName= "//input[@placeholder='Asset Name']";
@@ -39,6 +38,12 @@ namespace Scenario_Team1_Auto.PageObject.ManageAsset
         private readonly String inputDate= "//input[@id='create-new-asset_installed_date']";
         private readonly String dateToday = "//a[@class='ant-picker-today-btn']";
         private readonly String btnSave = "//span[text()='Save']";
+
+        private readonly String btnEdit = "//span[@aria-label='edit']";
+        private readonly String btnSaveEdit = "//span[text()='Save']";
+
+        private readonly String btnDelete = "(//span[@aria-label='close-circle'])[2]";
+        private readonly String btnConfDelete = "//span[text()='Delete']";
 
         private readonly string listAsset = "//tr[@class='ant-table-row ant-table-row-level-0']";
         private readonly String btnCreateAssets = "//button[@class='ant-btn ant-btn-default ant-btn-dangerous']";
@@ -54,7 +59,7 @@ namespace Scenario_Team1_Auto.PageObject.ManageAsset
         public void SearchByText()
         {
             IsElementDisplay(searchBox);
-            SendKey(searchBox, txtAssetName);
+            SendKey(searchBox, Asset.txtSearchName);
             Click(btnSearch);
             IsElementDisplay(resultAssetName);
         }
@@ -72,7 +77,7 @@ namespace Scenario_Team1_Auto.PageObject.ManageAsset
             Thread.Sleep(2000);
             Click(searchCategory);
             Click(categoryLaptop);
-            IsElementDisplay("Laptop");
+            IsElementDisplay("Monitor");
         }
 
         public void CreateNewAsset()
@@ -81,10 +86,26 @@ namespace Scenario_Team1_Auto.PageObject.ManageAsset
             SendKey(inputName, Asset.AssetName);
             SendKey(inputSpeci, Asset.AssetSpecification);
             Click(inputCat);
+            Thread.Sleep(2000);
             Click(catLaptop);
             Click(inputDate);
             Click(dateToday);
             Click(btnSave);
+            IsElementDisplay(Asset.ResultName);
+        }
+        public void EditAsset()
+        {
+            Click(btnEdit);
+            Clear(inputName);
+            SendKey(inputName, Asset.EditName);
+            Click(btnSaveEdit);
+            IsElementDisplay(Asset.ResultEditName);
+        }
+        public void DeleteAsset()
+        {
+            Click(btnDelete);
+            Click(btnConfDelete);
+            IsElementNotDisplay(Asset.ResultEditName);
         }
 
         public void GetCreateAssetPage()
