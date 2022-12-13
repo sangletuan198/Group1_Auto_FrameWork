@@ -40,20 +40,7 @@ namespace Scenario_Team1_Auto.TestCase
 
             requestPage.SearchByStateComplete();
         }
-        [Test]
-        public void SearchByText()
-        {
-
-            HomePage homePage = new HomePage(_driver);
-            LoginPage loginPage = new LoginPage(_driver);
-            RequestReturningPage requestPage = new RequestReturningPage(_driver);
-
-            loginPage.Login(newUserInfo.username, Constant.NEW_PASSWORD);
-
-            homePage.GetReqForReturn();
-
-            requestPage.SearchByText();
-        }
+       
         [Test]
         public void CompleteRequest()
         {
