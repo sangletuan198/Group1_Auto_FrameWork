@@ -5,9 +5,22 @@ namespace CoreFramework.DriverCore
     public class WebDriverManager_
     {
         private static AsyncLocal<IWebDriver> driver = new AsyncLocal<IWebDriver>();
+        //AsyncLocal to run parallel test
+
         public static void InitDriver(string Browser, int Width, int Height)
         {
             IWebDriver newDriver = null;
+            /*
+            if (frameworkConfiguration.ExecuteLocation.Equals("local"))
+            {
+                newDriver = WebDriverCreator.CreateLocalDriver(Browser, Width, Height);
+            }
+            else if (frameworkConfiguration.ExecuteLocation.Equals("browserstack"))
+            {
+                newDriver = WebDriverCreator.CreateBrowserStackDriver(Browser, Width, Height);
+            }
+            */
+
             newDriver = WebDriverCreator.CreateLocalDriver(Browser, Width, Height);
 
             if (newDriver == null)
