@@ -72,29 +72,6 @@ namespace CoreFramework.APICore
             return this;
         }
 
-        /*-------------------HTTP CLIENT
-        private HttpMethod CreateHttpMethod(string method)
-        {
-            switch (method.ToUpper())
-            {
-                case "GET":
-                    return HttpMethod.Get;
-                case "POST":
-                    return HttpMethod.Post;
-                case "HEAD":
-                    return HttpMethod.Head;
-                case "DELETE":
-                    return HttpMethod.Delete;
-                case "OPTIONS":
-                    return HttpMethod.Options;
-                default:
-                    throw new NotImplementedException();
-            }
-        }
-        */
-
-        /*-------SEND REQUEST------*/
-
         public APIResponse Get()
         {
             request.Method = "GET";

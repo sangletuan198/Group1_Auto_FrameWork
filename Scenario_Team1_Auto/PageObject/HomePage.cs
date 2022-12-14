@@ -15,8 +15,6 @@ namespace Scenario_Team1_Auto.PageObject
         {
         }
         private readonly String btnHome = "//a[@href='/home']";
-        private readonly String btnHomePage = "//a[@href='/homepage']"; // homepage for staff
-
         private readonly String btnManageUser = "//a[@href='/manage-users']";
         private readonly String btnManageAssets = "//a[contains(text(),'Manage Assets')]";
         private readonly String btnManageAassignments = "//a[@href='/manage-assignments']";
@@ -39,7 +37,10 @@ namespace Scenario_Team1_Auto.PageObject
         }
         public void VerifyStaffAccessAuthority()
         {
-            IsElementDisplay(btnHomePage);
+            IsElementDisplay(btnHome);
+            IsElementNotDisplay(btnManageAassignments);
+            IsElementNotDisplay(btnManageUser);
+            IsElementNotDisplay(btnManageAssets);
         }
 
         public void ChangePassword(string user,string oldPassword,string newPassword)
@@ -64,6 +65,7 @@ namespace Scenario_Team1_Auto.PageObject
         public void GetAssetPage()
         {
             Click(btnManageAssets);
+           
         }
        
         public void GetManageAassignmentsPage()

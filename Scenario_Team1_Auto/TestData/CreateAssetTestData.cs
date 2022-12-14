@@ -13,6 +13,7 @@ namespace Scenario_Team1_Auto.TestData
         public void CreateAssetData()
         {
             assetData.Add(new AssetDAO("MacBook Air M1", "Laptop", "Chip M1 16GB Ram", "2022-12-07", "Not Available"));//Available,Not Available
+            assetData.Add(new AssetDAO("MacBook Air M1 New", "Laptop", "Chip M1 16GB Ram 256GB New", "2022-12-09", "Available"));//Available,Not Available, Waiting for recycling , Recycled 
         }
     }
 }

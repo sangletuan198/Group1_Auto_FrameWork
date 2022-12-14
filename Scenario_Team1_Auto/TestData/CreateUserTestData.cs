@@ -9,10 +9,11 @@ namespace Scenario_Team1_Auto.TestData
 {
     public class CreateUserTestData
     {
-        public List<UserDAO> userData = new List<UserDAO>();
+        public List<CreateUserInfoDAO> userData = new List<CreateUserInfoDAO>();
         public void CreateUserData()
         {
-            userData.Add(new UserDAO("1998-02-24", "2022-12-05", "Sang", "MALE", "Le", "ADMIN"));
+            userData.Add(new CreateUserInfoDAO("1998-02-24", "2022-12-13", "Sang", "MALE", "Le Tuan", "ADMIN"));
+            userData.Add(new CreateUserInfoDAO("1999-12-04", "2022-12-13", "Lu", "MALE", "Do Thi Ngoc", "STAFF"));
         }
     }
 }

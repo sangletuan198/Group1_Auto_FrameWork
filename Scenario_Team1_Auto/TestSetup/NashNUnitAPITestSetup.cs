@@ -9,10 +9,13 @@ namespace Scenario_Team1_Auto.TestSetup
     public class NashNUnitAPITestSetup : NUnitTestSetup
     {
         public AuthorizationDAO user;
-        public NewUserDAO newUserInfo;
-       
+        public UserDAO newUserInfo;
+        public UserDAO userState;
+
+
         public NashAuthorizationService nashAuthorizationService;
         public CreateUserService createUserService;
+        public DisableUserService disableUserService;
         public LoginPage loginPage;
         public ChangePasswordFirstTimeService changePasswordFirstTimeService;
 
@@ -22,11 +25,11 @@ namespace Scenario_Team1_Auto.TestSetup
             nashAuthorizationService = new NashAuthorizationService();
             createUserService = new CreateUserService();
             changePasswordFirstTimeService = new ChangePasswordFirstTimeService();
-            loginPage = new LoginPage(_driver);
+           
 
             user = nashAuthorizationService.Login(Constant.ADMIN_USERNAME, Constant.ADMIN_PASSWORD);
 
-            newUserInfo = createUserService.GetNewUserInfo(user.accessToken);
+            newUserInfo = createUserService.GetNewUserInfo(user.accessToken,0);
 
             string userName = newUserInfo.username;
             string password = CreateUserService.ConversePassword(userName,newUserInfo.birthDate);
@@ -37,14 +40,15 @@ namespace Scenario_Team1_Auto.TestSetup
 
             changePasswordFirstTimeService.ChangePasswordRequest(user.accessToken,Constant.NEW_PASSWORD);
 
-            driverBaseAction.GoToURL(Constant.BASE_URL);
+            driverBaseAction.GoToURL(Constant.BASE_HOST);
         }
 
         [TearDown]
 
         public void TearDown()
         {
-
+            disableUserService = new DisableUserService();
+            userState = disableUserService.CheckUserState(user.accessToken, newUserInfo.staffCode);
         }
     }
 }

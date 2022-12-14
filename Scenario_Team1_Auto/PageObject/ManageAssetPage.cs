@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scenario_Team1_Auto.PageObject.ManageAsset
+namespace Scenario_Team1_Auto.PageObject
 {
     public class ManageAssetPage : WebDriverAction
     {
@@ -14,18 +14,20 @@ namespace Scenario_Team1_Auto.PageObject.ManageAsset
         {
         }
         private readonly string listAsset = "//tr[@class='ant-table-row ant-table-row-level-0']";
-        private readonly String btnCreateAssets = "//button[@class='ant-btn ant-btn-default ant-btn-dangerous']";
+        private readonly string btnCreateAssets = "//span[contains(text(),'Create new asset')]";
         public void GetCreateAssetPage()
         {
             Click(btnCreateAssets);
+          
         }
         public IList<IWebElement> GetAssetList()
         {
             IList<IWebElement> randomAsset = FindElementsByXpath(listAsset);
             return randomAsset;
         }
-       public void GetDetailOfRandomAsset()
+        public void GetDetailOfRandomAsset()
         {
+            
             IList<IWebElement> randomAsset = GetAssetList();
             foreach (var asset in randomAsset)
             {
@@ -35,6 +37,8 @@ namespace Scenario_Team1_Auto.PageObject.ManageAsset
             int index = random.Next(randomAsset.Count);
             Click(randomAsset[index]);
             Console.WriteLine(randomAsset[index].Text);
+           
         }
+
     }
 }

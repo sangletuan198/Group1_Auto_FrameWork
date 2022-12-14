@@ -16,14 +16,14 @@ namespace Scenario_Team1_Auto.Services
     {
         
         private string createUserPath = "/api/v1/admin/users";
-        public List<UserDAO> testRecord = new List<UserDAO>();
+        public List<CreateUserInfoDAO> testRecord = new List<CreateUserInfoDAO>();
         
-        public APIResponse CreateNewUserRequest(string token)
+        public APIResponse CreateNewUserRequest(string token,int i)
         {
             CreateUserTestData createUserTestData = new CreateUserTestData();
             createUserTestData.CreateUserData();
             testRecord = createUserTestData.userData;
-            var row = testRecord.ElementAt(0);
+            var row = testRecord.ElementAt(i);
             
             var body = "{\"birthDate\":\""+row.birthDate+"\"," +
                         "\"createdAt\":\""+row.createdAt+"\"," +
@@ -42,12 +42,12 @@ namespace Scenario_Team1_Auto.Services
                     .Post();
             return response;
         }
-        public NewUserDAO GetNewUserInfo(string token)
+        public UserDAO GetNewUserInfo(string token, int i)
         {
-            APIResponse response = CreateNewUserRequest(token);
+            APIResponse response = CreateNewUserRequest(token,i);
             Assert.True(response.responseStatusCode.Equals("Created"));
             var jsonResponse = response.responseBody;
-            NewUserDAO newUserInfo = (NewUserDAO)JsonConvert.DeserializeObject<NewUserDAO>(jsonResponse);
+            UserDAO newUserInfo = (UserDAO)JsonConvert.DeserializeObject<UserDAO>(jsonResponse);
 
             return newUserInfo;
         }
