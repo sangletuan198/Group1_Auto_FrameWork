@@ -41,9 +41,9 @@ namespace Scenario_Team1_Auto.TestCase
             //3. admin view manage asset page
             homePage.GetAssetPage();
             manageAsset.ViewAssetPage();
-            manageAsset.SearchByText();
             manageAsset.SearchByState();
             manageAsset.SearchByCategories();
+            manageAsset.SearchByText();
             manageAsset.CreateNewAsset();
             manageAsset.EditAsset();
             manageAsset.DeleteAsset();

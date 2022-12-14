@@ -48,19 +48,17 @@ namespace CoreFramework.DriverCore
             }
         }
         public bool IsElementNotDisplay(string locator)
-        {
-            try
+        { 
+            if (!FindElementByXpath(locator).Displayed)
             {
-              IsElementDisplay(locator);
                 TestContext.WriteLine("Selected element " + locator + " is not displayed");
                 HtmlReport.Pass("Selected element " + locator + " is not displayed");
-                return false;
-            }
-            catch(Exception ex)
-            {
-                TestContext.WriteLine("Selected element " + locator + " is still displayed");
-                HtmlReport.Fail("Selected element " + locator + " is still displayed", TakeScreenShot());
                 return true;
+            } else
+            {
+            TestContext.WriteLine("Selected element " + locator + " is still displayed");
+            HtmlReport.Fail("Selected element " + locator + " is still displayed", TakeScreenShot());
+            return false;
             }
         }
 

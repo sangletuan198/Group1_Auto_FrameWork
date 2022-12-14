@@ -38,6 +38,7 @@ namespace Scenario_Team1_Auto.PageObject
         private readonly string joinToday = "//a[@class='ant-picker-today-btn']";
         private readonly string selectType = "//div[@class='ant-select ant-select-in-form-item ant-select-single ant-select-show-arrow']";
         private readonly string selectTypeStaff = "//div[text()='Staff']";
+        private readonly string selectTypeAdmin = "//div[text()='Admin']";
         private readonly string btnSave = "//span[contains(text(),'Save')]";
         private readonly string btnCancel = "//span[contains(text(),'Cancel')]";
 
@@ -69,7 +70,6 @@ namespace Scenario_Team1_Auto.PageObject
             Thread.Sleep(2000);
             Click(findByType);
             Click(typeAdmin);
-            IsElementNotDisplay("STAFF");
         }
         public void SearchByText()
         {
@@ -85,7 +85,6 @@ namespace Scenario_Team1_Auto.PageObject
         public void CreateNewUser()
         {
             Click(btnCreate);
-            IsElementDisable(btnSave);
             SendKey(inputFirstName, User.FirstName);
             SendKey(inputLastName, User.LastName);
             Click(genderMale);
@@ -112,8 +111,9 @@ namespace Scenario_Team1_Auto.PageObject
         {
             IsElementDisplay(btnEdit);
             Click(btnEdit);
+            Click(selectType);
             Thread.Sleep(2000);
-            RemoveReadonlyAndSendKeys(inputDOB, User.EditDoB);
+            Click(selectTypeAdmin);
             IsElementDisplay(btnSaveEdit);
             Click(btnSaveEdit);
         }
@@ -125,7 +125,7 @@ namespace Scenario_Team1_Auto.PageObject
             IsElementDisplay(btnConfirmDel);
             Thread.Sleep(2000);
             Click(btnConfirmDel);
-            IsElementNotDisplay("//td[text()='Tu Nguyen']");
+            //IsElementNotDisplay("//td[text()='Tu Nguyen']");
         }
     }
 }
