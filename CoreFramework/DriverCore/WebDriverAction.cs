@@ -3,7 +3,9 @@ using NUnit.Framework;
 using CoreFramework.Reporter;
 using OpenQA.Selenium.Support.UI;
 
+
 namespace CoreFramework.DriverCore
+
 {
     public class WebDriverAction
     {
@@ -13,18 +15,75 @@ namespace CoreFramework.DriverCore
         {
             this.driver = driver;
         }
-        public void GoToURL(string url)
-        {
-            driver.Navigate().GoToUrl(url);
-            HtmlReport.Pass("Go to URL: " + url);
-        }
-        public void RefreshPage()
-        {
-            driver.Navigate().Refresh();   
-        }
+
         public By ByXpath(string locator)
         {
             return By.XPath(locator);
+        }
+
+        public string getTitle()
+        {
+            return driver.Title;
+        }
+
+        public string getUrl()
+        {
+            return driver.Url;
+        }
+
+        public bool IsElementDisplay(string locator)
+        {
+            try
+            {
+                FindElementByXpath(locator);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+        public bool IsElementNotDisplay(string locator)
+        {
+            try
+            {
+              IsElementDisplay(locator);
+                return false;
+            }
+            catch(Exception ex)
+            {
+                return true;
+            }
+        }
+
+        public IWebElement IsElementEnable(string locator)
+        {
+            IWebElement e =  FindElementByXpath(locator);
+            if (e.Enabled)
+            {
+                TestContext.WriteLine("Element is enable");
+            }
+            else
+            {
+                TestContext.WriteLine("Element is disable");
+            }
+            return e;
+         
+        }
+
+        public bool IsElementDisable(string locator)
+        {
+            IWebElement e = FindElementByXpath(locator);
+            if (e.Enabled)
+            {
+                return false;
+                TestContext.WriteLine("Element is enable");
+            }
+            else
+            {
+                TestContext.WriteLine("Element is disable");
+                return true;
+            }
         }
 
         public IWebElement FindElementByXpath(string locator)
@@ -35,7 +94,7 @@ namespace CoreFramework.DriverCore
                 IWebElement e = driver.FindElement(ByXpath(locator));
                 
                 TestContext.WriteLine("Find element" + locator.ToString() + "passed");
-                highlightElement(e);
+                hightlightElement(e);
                 HtmlReport.Pass("Find element" + locator.ToString() + "passed");
                 return e;
             }
@@ -51,8 +110,7 @@ namespace CoreFramework.DriverCore
         {
             return driver.FindElements(ByXpath(locator));
         }
-
-        public IWebElement highlightElement(IWebElement element)
+        public IWebElement hightlightElement(IWebElement element)
         {
             IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
             jse.ExecuteScript("arguments[0].style.border='2px solid red'", element);
@@ -63,40 +121,37 @@ namespace CoreFramework.DriverCore
         {
             try
             {
-                WaitForElementToBeClickable(driver, e);
-                highlightElement(e);
+                hightlightElement(e);
                 e.Click();
-                TestContext.WriteLine("Click into element " + e.ToString() + " passed");
-                HtmlReport.Pass("Click into element " + e.ToString() + " passed");
+                TestContext.WriteLine("click into element" + e.ToString() + "passed");
+                HtmlReport.Pass("click into element" + e.ToString() + "passed");
             }
             catch (Exception ex)
             {
-                TestContext.WriteLine("Click into element " + e.ToString() + " failed");
-                HtmlReport.Fail("Click into element " + e.ToString() + " failed", TakeScreenShot());
+                TestContext.WriteLine("click into element" + e.ToString() + "failed");
+                HtmlReport.Fail("click into element" + e.ToString() + "failed", TakeScreenShot());
                 throw ex;
             }
         }
-   
-        public void Click(string locator)
+
+        public void Clicks(string locator)
         {
             try
             {
                 WaitForElementExists(driver, locator);
-                IWebElement e = FindElementByXpath(locator);
-                WaitForElementToBeClickable(driver, e);
+                WaitForElementToBeClickable(driver, locator);
                 FindElementByXpath(locator).Click();
-                TestContext.WriteLine("Click into element " + locator.ToString() + " passed");
-                HtmlReport.Pass("Click into element " + locator.ToString() + " passed");
+                TestContext.WriteLine("click into element" + locator.ToString() + "passed");
+                HtmlReport.Pass("click into element" + locator.ToString() + "passed");
             }
             catch (Exception ex)
             {
-                TestContext.WriteLine("Click into element " + locator.ToString() + " failed");
-                HtmlReport.Fail("Click into element " + locator.ToString() + " failed", TakeScreenShot());
+                TestContext.WriteLine("click into element" + locator.ToString() + "failed");
+                HtmlReport.Fail("click into element" + locator.ToString() + "failed", TakeScreenShot());
                 throw ex;
             }
 
         }
-
 
         public void SendKey(String locator, string key)
         {
@@ -104,14 +159,59 @@ namespace CoreFramework.DriverCore
             {
                 WaitForElementExists(driver, locator);
                 FindElementByXpath(locator).SendKeys(key);
-                TestContext.WriteLine("SendKey " + key.ToString() + " into element " + locator.ToString() + " passed");
-                HtmlReport.Pass("Senkey " + key.ToString() + " into element " + locator.ToString() + " passed");
+                TestContext.WriteLine("SendKey into element " + locator.ToString() + "passed");
+                HtmlReport.Pass("senkey into element" + locator.ToString() + "passed");
             }
             catch (Exception ex)
             {
-                TestContext.WriteLine("SendKey " + key.ToString() + " into element " + locator.ToString() + "failed");
-                HtmlReport.Fail("SendKey " + key.ToString() + " into element " + locator.ToString() + "failed", TakeScreenShot());
+                TestContext.WriteLine("SendKey into element " + locator.ToString() + "failed");
+                HtmlReport.Fail("senkey into element" + locator.ToString() + "failed", TakeScreenShot());
                 throw ex;
+            }
+        }
+
+        public void Replace(String locator, string key)
+        {
+            try
+            {
+                FindElementByXpath(locator).Clear();
+                FindElementByXpath(locator).SendKeys(key);
+                TestContext.WriteLine("Replace" + locator.ToString() + "to" + key.ToString() + "passed");
+                HtmlReport.Pass("Replace" + locator.ToString() + "to" + key.ToString() + "passed");
+            }
+            catch (Exception ex)
+            {
+                TestContext.WriteLine("SendKey into element " + locator + "failed");
+                HtmlReport.Fail("Replace" + locator.ToString() + "to" + key.ToString() + "failed", TakeScreenShot());
+                throw ex;
+            }
+        }
+
+        public void Back()
+        {
+            driver.Navigate().Back();
+        }
+
+        public String GetText(string locator)
+        {
+            string e = FindElementByXpath(locator).Text;
+            return e;
+        }
+
+        public void SelectOption(String locator, String key)
+        {
+            try
+            {
+                IWebElement mySelectOption = FindElementByXpath(locator);
+                SelectElement dropdown = new SelectElement(mySelectOption);
+                dropdown.SelectByText(key);
+                TestContext.WriteLine("Select element " + locator + " successfuly with " + key);
+                HtmlReport.Pass("Select" + key.ToString() + "from" + locator.ToString() + "passed");
+            }
+            catch (Exception ex)
+            {
+                TestContext.WriteLine("Select element " + locator + " failed with " + key);
+                HtmlReport.Fail("Select" + key.ToString() + "from" + locator.ToString() + "failed", TakeScreenShot());
             }
         }
 
@@ -122,87 +222,23 @@ namespace CoreFramework.DriverCore
             screenshot.SaveAsFile(path, ScreenshotImageFormat.Png);
             return path;
         }
-      
-        public IWebElement WaitForElementToBeClickable(IWebDriver driver, IWebElement e, float timeOut = 3)
+
+        public IWebElement WaitForElementToBeClickable(IWebDriver driver, string locator, float timeOut = 30)
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOut));
-            return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(e));
+            return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(locator)));
         }
 
-        public IWebElement WaitForElementExists(IWebDriver driver, string locator, float timeOut = 3)
+        public IWebElement WaitForElementExists(IWebDriver driver, string locator, float timeOut = 30)
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOut));
             return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(locator)));
         }
-       
 
-        
-        public bool IsElementDisplay(string locator)
+        public void GoToURL(string url)
         {
-            try
-            {
-                driver.FindElement(ByXpath(locator));
-                TestContext.WriteLine("Element " + locator + " is display");
-                HtmlReport.Pass("Element " + locator + " is display");
-                return true;
-            }
-            catch (NoSuchElementException)
-            {
-                TestContext.WriteLine("Element " + locator + " is not display");
-                HtmlReport.Fail("Element " + locator + " is not display", TakeScreenShot());
-                return false;
-            }
-        }
-        public bool IsElementNotDisplay(string locator)
-        {
-            try
-            {
-                
-                driver.FindElement(ByXpath(locator));
-                TestContext.WriteLine("Element " + locator + " is display");
-                HtmlReport.Fail("Element " + locator + " is display", TakeScreenShot());
-                return false;
-            }
-            catch (Exception ex)
-            {
-                TestContext.WriteLine("Element " + locator + " is not display");
-                HtmlReport.Pass("Element " + locator + " is not display");
-                return true;
-            }
-        }
-
-        public bool IsElementEnable(string locator)
-        {
-            IWebElement e = driver.FindElement(ByXpath(locator));
-            if (e.Enabled)
-            {
-                TestContext.WriteLine("Element " + locator + " enable");
-                HtmlReport.Pass("Element " + locator + " enable");
-                return true;
-            }
-            else
-            {
-                TestContext.WriteLine("Element " + locator + " disable");
-                HtmlReport.Fail("Element " + locator + " disnable",TakeScreenShot());
-                return false;
-            }
-        }
-
-        public bool IsElementDisable(string locator)
-        {
-            IWebElement e = driver.FindElement(ByXpath(locator));
-            if (e.Enabled)
-            {
-                TestContext.WriteLine("Element " + locator + " enable");
-                HtmlReport.Fail("Element " + locator + " enable", TakeScreenShot());
-                return false;
-            }
-            else
-            {
-                TestContext.WriteLine("Element " + locator + " disable");
-                HtmlReport.Pass("Element " + locator + " disable");
-                return true;
-            }
+            driver.Navigate().GoToUrl(url);
+            HtmlReport.Pass("Go to URL: " + url);
         }
     }
 }
