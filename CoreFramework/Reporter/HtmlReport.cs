@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.MarkupUtils;
 using AventStack.ExtentReports.Reporter;
-using CoreFramework.APICore;
+
 using NUnit.Framework;
-using CoreFramework.Reporter.ExtentMarkup;
+
 
 namespace CoreFramework.Reporter
 {
@@ -110,12 +109,7 @@ namespace CoreFramework.Reporter
             TestContext.WriteLine(des);
         }
 
-        /*
-        public static void Info(HttpWebRequest request, HttpWebResponse response)
-        {
-            GetTest().Info(MarkupHelperPlus.CreateRequest(request, response);
-        }        */
-
+     
         public static void Warning(string des)
         {
             GetTest().Warning(des);
@@ -171,9 +165,6 @@ namespace CoreFramework.Reporter
             GetTest().Skip(m);
         }
 
-        public static void CreateAPIRequestLog(APIRequest request, APIResponse response)
-        {
-            GetTest().Info(MarkupHelperPlus.CreateAPIRequestLog(request, response));
-        }
+        
     }
 }
