@@ -22,7 +22,7 @@ namespace Scenario_Team1_Auto.Services
             TestContext.WriteLine(body);
 
             APIResponse response = new APIRequest()
-                    .SetUrl(Constant.BASE_HOST + createUserPath)
+                    .SetUrl(Constant.baseHost + createUserPath)
                     .AddHeader("Content-Type", "application/json")
                     .AddHeader("Authorization", "Bearer " + token)
                     .SetBody(body)

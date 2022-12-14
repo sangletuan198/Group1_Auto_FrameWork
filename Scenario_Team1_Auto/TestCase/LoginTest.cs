@@ -18,5 +18,16 @@ namespace Scenario_Team1_Auto.TestCase
             loginPage.Login(newUserInfo.username, Constant.NEW_PASSWORD2);
             homePage.Logout(newUserInfo.username);
         }
+
+        [Test]
+        public void AdminLogout()
+        {
+            HomePage homePage = new HomePage(_driver);
+            LoginPage loginPage = new LoginPage(_driver);
+            string userName = Constant.adminUserName;
+            string password = Constant.adminPassword;
+            loginPage.Login(userName, password);
+            homePage.Logout(userName);
+        }
     }
 }

@@ -2,14 +2,16 @@
 {
     public class Constant
     {
-        public static string baseUrl = "http://13.212.23.86";
-        public static string nashHost = "http://13.212.23.86";
+        public static string baseUrl = "http://18.141.229.145";
+        public static string baseHost = "http://18.141.229.145";
 
-        public static string staffUserName = "quynhct";
-        public static string staffPassword = "quynhct@01011990";
+        public static string stafUsername = "tuandv";
+        public static string staffPassword = "tuandv@01011990";
 
         public static string adminUserName = "vangdv";
         public static string adminPassword = "vangdv@01011990";
-        public static string newPassword = "12345678";
+        public static string NEW_PASSWORD = "87654321";
+        public static string NEW_PASSWORD2 = "987654321";
+
     }
 }

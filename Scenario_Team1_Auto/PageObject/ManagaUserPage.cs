@@ -42,7 +42,7 @@ namespace Scenario_Team1_Auto.PageObject
             }
             var random = new Random();
             int index = random.Next(randomUsers.Count);
-            Click(randomUsers[index]);
+            Clicks(randomUsers[index]);
             TestContext.WriteLine(randomUsers[index].Text);
         }
 

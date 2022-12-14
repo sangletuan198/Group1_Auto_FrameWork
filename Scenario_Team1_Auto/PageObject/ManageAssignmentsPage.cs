@@ -1,15 +1,7 @@
 ﻿using CoreFramework.DriverCore;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using Scenario_Team1_Auto.DAO;
-using SeleniumExtras.WaitHelpers;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Scenario_Team1_Auto.TestData;
 
 namespace Scenario_Team1_Auto.PageObject
 {
@@ -28,6 +20,8 @@ namespace Scenario_Team1_Auto.PageObject
         public string editAssign = "//button[span[@class='anticon anticon-edit']]";
         public string deleteAssign = "(//div[@class = 'ant-space-item'])[6]";
         public string confirmDeleteAssign = "//button[@class='ant-btn ant-btn-danger button-modal']";
+        public string cancelDeleteAssign = "//button[@class='ant-btn button-modal']";
+        public string closePopUpDetail = "//span[@class='anticon anticon-close ant-modal-close-icon']";
 
         public string btnCreateNewAssign = "//span[contains(text(),'Create new assignment')]";
         public string createNewAssignPageTitle = "//div[contains(text(),'Manage Assignment > Create New Assignment')]";
@@ -35,11 +29,26 @@ namespace Scenario_Team1_Auto.PageObject
         public string btnEditAssignmentUser = "//label[@title='User']/parent::div/following-sibling::div/div/div/div/div/span/input";
         public string btnSelectAssignmentAsset = "//input[@id='create-new-assignment_assetId']";
         public string btnEditAssignmentAsset = "//input[@id='create-new-assignment_assetId']";
-        public string CreateAssignDate = "create-new-assignment_assignDate";
+        public string btnCreateAssignDate = "//div[@class='ant-picker-input']";
+        public string assignDate = "//td[@title='2022-12-20']";
+        public string editAssignDate = "//td[@title='2022-12-23']";
         public string btnSaveNewAssignment = "//button[@type='submit']";
+        public string btnCancelEditAssignment = "//button[@type='button']";
         public string dropdownUser = "//label[@title='User']/parent::div/following-sibling::div/div/div/div/div/span[2]";
         public string noteAssign = "//textarea[@id='create-new-assignment_assignNote']";
 
+        public string stateFilter = "(//span[input])[1]";
+        public string stateAll = "(//div[@title])[1]]";
+        public string stateAcpt = "(//div[@title])[2]";
+        public string stateWaiting = "(//div[@title])[3]";
+
+        public string filterDate = "//div[@class='ant-picker-input']";
+        public string searchFilter = "(//span[input])[2]";
+        public string btnSearch = "//button[@class='ant-btn ant-btn-default ant-btn-icon-only ant-input-search-button']";
+
+        public string btnAdminCreateReturnAss = "//button[@class='ant-btn ant-btn-default test' and not(@disabled)]";
+        public string btnAdminConfirmReturnAss = "//span[text () ='Yes']";
+        public string btnAdminCancelReturnAss = "//span[text () ='No']";
 
         public void VerifyManageAssignmentsPageDisplay()
         {
@@ -52,6 +61,11 @@ namespace Scenario_Team1_Auto.PageObject
             IList<IWebElement> randomAssignment = FindElementsByXpath(listAssignment);
             return randomAssignment;
         }
+
+        public void ClosePopUpDetailAssign()
+        {
+            Clicks(closePopUpDetail);
+        }    
 
         public void GetDetailOfRandomAssignment()
         {
@@ -82,12 +96,13 @@ namespace Scenario_Team1_Auto.PageObject
 
         public void CreateNewAssignment()
         {
-            SendKey(btnSelectAssignmentUser, "Vang Do Van");
+            SendKey(btnSelectAssignmentUser, "Tuan Do Van");
             SendKey(btnSelectAssignmentUser, Keys.Enter);
             Thread.Sleep(2000);
-            SendKey(btnSelectAssignmentAsset, "laptop dell XPS 13");
+            SendKey(btnSelectAssignmentAsset, "Macbook Air M1 New");
             SendKey(btnSelectAssignmentAsset, Keys.Enter);
-            RemoveReadonlyAndSendKeysAssignDate(CreateAssignDate, "2022-12-09");
+            Clicks(btnCreateAssignDate);
+            Clicks(assignDate);
             Thread.Sleep(2000);
             SendKey(noteAssign, "test add assign");
             SendKey(noteAssign, Keys.Enter);
@@ -100,13 +115,22 @@ namespace Scenario_Team1_Auto.PageObject
         public void EditAssignment()
         {
             Clicks(editAssign);
-            SendKey(btnSelectAssignmentUser, "Vang Do Van");
-            SendKey(btnSelectAssignmentUser, Keys.Enter);
             Thread.Sleep(2000);
             SendKey(noteAssign, "test add assign edit");
             SendKey(noteAssign, Keys.Enter);
+            Clicks(btnCreateAssignDate);
+            Clicks(editAssignDate);
             Thread.Sleep(2000);
             Clicks(btnSaveNewAssignment);
+            Thread.Sleep(2000);
+
+        }
+
+        public void CancelEditAssignment()
+        {
+            Clicks(editAssign);
+            Thread.Sleep(2000);
+            Clicks(btnCancelEditAssignment);
             Thread.Sleep(2000);
 
         }
@@ -118,6 +142,61 @@ namespace Scenario_Team1_Auto.PageObject
             Clicks(confirmDeleteAssign);
             Thread.Sleep(2000);
 
+        }
+
+        public void CancelDeleteAssignment()
+        {
+            Clicks(deleteAssign);
+            Thread.Sleep(2000);
+            Clicks(cancelDeleteAssign);
+            Thread.Sleep(2000);
+
+        }
+
+        public void SortByStateAll()
+        {
+            Clicks(stateFilter);
+            Clicks(stateAll);
+            Thread.Sleep(2000);
+        }
+
+        public void SortByStateAcpt()
+        {
+            Clicks(stateFilter);
+            Clicks(stateAcpt);
+            Thread.Sleep(2000);
+        }
+
+        public void SortByStateWait()
+        {
+            Clicks(stateFilter);
+            Clicks(stateWaiting);
+            Thread.Sleep(2000);
+        }
+
+        public void DateFilter()
+        {
+            Clicks(filterDate);
+        }
+
+        public void SearchFilter()
+        {
+            WaitForElementToBeClickable(driver, searchFilter, 30);
+            SendKey(searchFilter, Assignment.txtAssignSearchName);
+            Clicks(btnSearch);
+            Thread.Sleep(2000);
+        }
+
+        public void AdminCreateReturnAssYes()
+        {
+            Clicks(btnAdminCreateReturnAss);
+            Clicks(btnAdminConfirmReturnAss);
+        }
+
+        public void AdminCreateReturnAssNo()
+        {
+            Clicks(btnAdminCreateReturnAss);
+            Clicks(btnAdminCancelReturnAss);
         }
     }
 }

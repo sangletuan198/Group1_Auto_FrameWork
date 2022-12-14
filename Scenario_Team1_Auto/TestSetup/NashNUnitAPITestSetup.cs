@@ -10,7 +10,7 @@ namespace Scenario_Team1_Auto.TestSetup
     {
         public AuthorizationDAO user;
         public NewUserDAO newUserInfo;
-       
+
         public NashAuthorizationService nashAuthorizationService;
         public CreateUserService createUserService;
         public LoginPage loginPage;
@@ -24,20 +24,20 @@ namespace Scenario_Team1_Auto.TestSetup
             changePasswordFirstTimeService = new ChangePasswordFirstTimeService();
             loginPage = new LoginPage(_driver);
 
-            user = nashAuthorizationService.Login(Constant.ADMIN_USERNAME, Constant.ADMIN_PASSWORD);
+            user = nashAuthorizationService.Login(Constant.adminUserName, Constant.adminPassword);
 
             newUserInfo = createUserService.GetNewUserInfo(user.accessToken);
 
             string userName = newUserInfo.username;
-            string password = CreateUserService.ConversePassword(userName,newUserInfo.birthDate);
+            string password = CreateUserService.ConversePassword(userName, newUserInfo.birthDate);
             Console.WriteLine(userName);
             Console.WriteLine(password);
 
             user = nashAuthorizationService.Login(userName, password);
 
-            changePasswordFirstTimeService.ChangePasswordRequest(user.accessToken,Constant.NEW_PASSWORD);
+            changePasswordFirstTimeService.ChangePasswordRequest(user.accessToken, Constant.NEW_PASSWORD);
 
-            driverBaseAction.GoToURL(Constant.BASE_URL);
+            driverBaseAction.GoToURL(Constant.baseUrl);
         }
 
         [TearDown]
