@@ -15,64 +15,88 @@ namespace Scenario_Team1_Auto.PageObject
         {
         }
         private readonly String btnHome = "//a[@href='/home']";
-        private readonly String btnHomePage = "//a[@href='/homepage']"; // homepage for staff
-
-        private readonly String btnManageUser = "//a[@href='/manage-users']";
-        private readonly String btnManageAssets = "//a[contains(text(),'Manage Assets')]";
         private readonly String btnManageAassignments = "//a[@href='/manage-assignments']";
 
-        private readonly String btnChangePassword = "//a[contains(text(),'Change Password')]";         
+           
         private readonly String btnLogout = "//a[contains(text(),'Logout')]";   
 
         private readonly String btnConfirmLogout = "//button[@class='ant-btn ant-btn-primary ant-btn-dangerous']";
 
-        private readonly String tfOldPassword = "//input[@placeholder='Old Password']";
-        private readonly String tfNewPassword = "//input[@placeholder='New Password']";
-        private readonly String btnSave = "//button[@type='submit']";
+        private readonly String acceptedTickIcon = "//td[contains(text(),'Accepted')]//following::td[1]//span[@aria-label='check']";
+        private readonly String waitingForAcceptTickIcon = "//td[contains(text(),'Waiting For Acceptance')]//following::td[1]//span[@aria-label='check']";
 
-        public void VerifyAdminAccessAuthority()
-        {
-            IsElementDisplay(btnHome);
-            IsElementDisplay(btnManageUser);
-            IsElementDisplay(btnManageAssets);
-            IsElementDisplay(btnManageAassignments);
-        }
+        private readonly String waitingForAcceptXIcon = "//td[contains(text(),'Waiting For Acceptance')]//following::td[1]//span[@aria-label='close-circle']";
+        private readonly String returnIcon = "//tbody/tr[1]//span[@aria-label='reload']";
+
+        private readonly String waitingForAcceptReturnIcon = "//td[contains(text(),'Waiting For Acceptance')]//following::td[1]//span[@aria-label='reload']";
+        private readonly String acceptedReturnIcon = "//td[contains(text(),'Accepted')]//following::td[1]//span[@aria-label='reload']";
+
+        private readonly String btnAccept = " //span[contains(text(),'Accept')]";
+        private readonly String btnDecline = "//button[@class='ant-btn ant-btn-danger button-modal']";
+        private readonly String btnYes = "//span[contains(text(),'Yes')]";
+
+        
         public void VerifyStaffAccessAuthority()
         {
-            IsElementDisplay(btnHomePage);
+            IsElementDisplay(btnHome);
+            IsElementNotDisplay(btnManageAassignments);
+           
+        }
+       public void VerifyReturnIconDisable()
+        {
+            IsElementDisable(waitingForAcceptReturnIcon);
+           
+        }
+       public void VerifyTickIconEnable()
+        {
+            IsElementEnable(waitingForAcceptTickIcon);
+         
+        }
+        public void VerifyXIconEnable()
+        {
+            IsElementEnable(waitingForAcceptXIcon);
+          
+        }
+        public void StaffAcceptAssignment()
+        {
+            Click(waitingForAcceptTickIcon);
+            Click(btnAccept);
+            RefreshPage();
+        }
+        public void VerifyReturnIconEnable()
+        {
+            IsElementEnable(acceptedReturnIcon);
+          
+
+        }
+        public void VefiryTickIconDisable()
+        {
+            IsElementDisable(acceptedTickIcon);
+          
         }
 
-        public void ChangePassword(string user,string oldPassword,string newPassword)
-        { 
-            string locator = "//span[contains(text(),'" + user + "')]";
-            Clicks(locator);
-            Clicks(btnChangePassword);
-
-            IsElementDisable(btnSave);
-
-            SendKey(tfOldPassword, oldPassword);
-            SendKey(tfNewPassword, newPassword);
-
-            Clicks(btnSave);
+        public void StaffDeclineAssignment()
+        {
+            Click(waitingForAcceptXIcon);
+            Click(btnDecline);
+            RefreshPage();
         }
+
+        public void StaffReturnAssignent()
+        {
+            Click(returnIcon);
+            Click(btnYes);
+            RefreshPage();
+        }
+
         public void Logout(string user)
         {
-            Clicks("//span[contains(text(),'" + user + "')]");
-            Clicks(btnLogout);
-            Clicks(btnConfirmLogout);
+            string cfgUser = "//span[contains(text(),'" + user + "')]";
+            Click(cfgUser);
+            Click(btnLogout);
+            Click(btnConfirmLogout);
+           
         }
-        public void GetAssetPage()
-        {
-            Clicks(btnManageAssets);
-        }
-       
-        public void GetManageAassignmentsPage()
-        {
-            Clicks(btnManageAassignments);
-        }
-        public void GetManageUserPage()
-        {
-            Clicks(btnManageUser);
-        }
+
     }
 }
