@@ -26,7 +26,7 @@ namespace Scenario_Team1_Auto.PageObject
         private readonly String btnChangePassword = "//a[contains(text(),'Change Password')]";         
         private readonly String btnLogout = "//a[contains(text(),'Logout')]";   
 
-        private readonly String btnConfirmLogout = "//button[@class='ant-btn ant-btn-primary ant-btn-dangerous']";
+        private readonly String btnConfirmLogout = "//button[@class='ant-btn ant-btn-primary ant-btn-dangerous']//span[text ()='Log out']";
 
         private readonly String tfOldPassword = "//input[@placeholder='Old Password']";
         private readonly String tfNewPassword = "//input[@placeholder='New Password']";
@@ -35,8 +35,8 @@ namespace Scenario_Team1_Auto.PageObject
         private readonly String btnStaffAcptAss = "//button[@class='ant-btn ant-btn-default' and not(@disabled)][span[@class='anticon anticon-check']]";
         private readonly String btnStaffConfirmAcpt = "//span[text()='Accept']";
         private readonly String btnStaffCancelConfirmAcpt = "//span[text()='Cancel']";
-        private readonly String btnStaffDeclineAss = "//button[@class='ant-btn ant-btn-default' and not(@disabled)][span[@class='anticon anticon-close-circle']]";
-        private readonly String btnStaffReturnAss = "//button[@class='ant-btn ant-btn-default test' and not(@disabled)][span[@class='anticon anticon-reload']]";
+        private readonly String btnStaffDeclineAss = "//button[@class='ant-btn ant-btn-default' and not(@disabled)]//span[@class='anticon anticon-close-circle']";
+        private readonly String btnStaffReturnAss = "//button[@class='ant-btn ant-btn-default test' and not(@disabled)]//span[@class='anticon anticon-reload']";
         private readonly String btnStaffConfirmDecline = "//span[text () ='Decline']";
         private readonly String btnStaffCancelDecline = "//span[text () ='Cancel']";
         private readonly String btnStaffConfirmReturnAss = "//span[text () ='Yes']";

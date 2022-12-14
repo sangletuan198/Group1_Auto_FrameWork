@@ -30,7 +30,7 @@ namespace Scenario_Team1_Auto.PageObject
             SendKey(tfPassWord, password);
             IsElementEnable(btnLogin);
             Clicks(btnLogin);
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
         }
         public void ChangePasswordForTheFirstTime(string newPassword)
         {

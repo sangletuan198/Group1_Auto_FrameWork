@@ -98,58 +98,45 @@ namespace Scenario_Team1_Auto.PageObject
         {
             SendKey(btnSelectAssignmentUser, "Tuan Do Van");
             SendKey(btnSelectAssignmentUser, Keys.Enter);
-            Thread.Sleep(2000);
             SendKey(btnSelectAssignmentAsset, "Macbook Air M1 New");
             SendKey(btnSelectAssignmentAsset, Keys.Enter);
             Clicks(btnCreateAssignDate);
             Clicks(assignDate);
-            Thread.Sleep(2000);
             SendKey(noteAssign, "test add assign");
             SendKey(noteAssign, Keys.Enter);
-            Thread.Sleep(2000);
             Clicks(btnSaveNewAssignment);
-            Thread.Sleep(2000);
 
         }
 
         public void EditAssignment()
         {
             Clicks(editAssign);
-            Thread.Sleep(2000);
             SendKey(noteAssign, "test add assign edit");
             SendKey(noteAssign, Keys.Enter);
             Clicks(btnCreateAssignDate);
             Clicks(editAssignDate);
-            Thread.Sleep(2000);
             Clicks(btnSaveNewAssignment);
-            Thread.Sleep(2000);
 
         }
 
         public void CancelEditAssignment()
         {
             Clicks(editAssign);
-            Thread.Sleep(2000);
             Clicks(btnCancelEditAssignment);
-            Thread.Sleep(2000);
 
         }
 
         public void DeleteAssignment()
         {
             Clicks(deleteAssign);
-            Thread.Sleep(2000);
             Clicks(confirmDeleteAssign);
-            Thread.Sleep(2000);
 
         }
 
         public void CancelDeleteAssignment()
         {
             Clicks(deleteAssign);
-            Thread.Sleep(2000);
             Clicks(cancelDeleteAssign);
-            Thread.Sleep(2000);
 
         }
 
@@ -157,21 +144,18 @@ namespace Scenario_Team1_Auto.PageObject
         {
             Clicks(stateFilter);
             Clicks(stateAll);
-            Thread.Sleep(2000);
         }
 
         public void SortByStateAcpt()
         {
             Clicks(stateFilter);
             Clicks(stateAcpt);
-            Thread.Sleep(2000);
         }
 
         public void SortByStateWait()
         {
             Clicks(stateFilter);
             Clicks(stateWaiting);
-            Thread.Sleep(2000);
         }
 
         public void DateFilter()
@@ -184,7 +168,6 @@ namespace Scenario_Team1_Auto.PageObject
             WaitForElementToBeClickable(driver, searchFilter, 30);
             SendKey(searchFilter, Assignment.txtAssignSearchName);
             Clicks(btnSearch);
-            Thread.Sleep(2000);
         }
 
         public void AdminCreateReturnAssYes()
