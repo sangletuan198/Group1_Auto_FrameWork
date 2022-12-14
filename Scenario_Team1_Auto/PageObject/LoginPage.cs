@@ -24,19 +24,19 @@ namespace Scenario_Team1_Auto.PageObject
 
 
         public void Login(string username, string password)
-        {
-            IsElementDisable(btnLogin);
+        {            
             SendKey(tfUserName, username);
             SendKey(tfPassWord, password);
             IsElementEnable(btnLogin);
-            Clicks(btnLogin);
+            Click(btnLogin);
+            Thread.Sleep(4000);
         }
         public void ChangePasswordForTheFirstTime(string newPassword)
         {
             IsElementDisable(btnSave);
             SendKey(tfPasswordFirtTime, newPassword);
             IsElementEnable(btnSave);
-            Clicks(btnSave);
+            Click(btnSave);
         }
     }
 }
