@@ -17,7 +17,7 @@ namespace Scenario_Team1_Auto.PageObject
         private readonly String titleHome = "//div[text()='Home']";
         private readonly String btnHome = "//a[@href='/home']";
         private readonly String btnHomePage = "//a[@href='/homepage']"; // homepage for staff
-        private readonly String adminAssignList = "//h1[text()='My Assignments']";
+        private readonly String adminAssignList = "//table[@style='table-layout: auto;']";
 
         private readonly String btnManageUser = "//a[@href='/manage-users']";
         private readonly String btnManageAssets = "//a[contains(text(),'Manage Assets')]";

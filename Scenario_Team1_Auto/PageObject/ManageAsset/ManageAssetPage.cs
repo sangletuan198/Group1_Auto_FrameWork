@@ -22,7 +22,7 @@ namespace Scenario_Team1_Auto.PageObject.ManageAsset
 
         private readonly String searchBox = "//input[@placeholder='Search']";
         private readonly String btnSearch = "//button[@class='ant-btn ant-btn-default ant-btn-icon-only ant-input-search-button']";
-        private readonly String resultAssetName = "//td[text()='MacBook Air M1MacBook Air M1 New']";
+        private readonly String resultAssetName = "//td[text()='Monitor Dell UltraSharp']";
 
         private readonly String searchState= "//div[@class='ant-space-item'][1]";
         private readonly String stateAvailble= "//div[text()='Assigned' and @class='ant-select-item-option-content']";
@@ -40,6 +40,7 @@ namespace Scenario_Team1_Auto.PageObject.ManageAsset
         private readonly String btnSave = "//span[text()='Save']";
 
         private readonly String btnEdit = "//span[@aria-label='edit']";
+        private readonly String radioWait = "//input[@value='WAITING_FOR_RECYCLING']";
         private readonly String btnSaveEdit = "//span[text()='Save']";
 
         private readonly String btnDelete = "(//span[@aria-label='close-circle'])[2]";
@@ -94,16 +95,13 @@ namespace Scenario_Team1_Auto.PageObject.ManageAsset
         public void EditAsset()
         {
             Click(btnEdit);
-            Clear(inputName);
-            SendKey(inputName, Asset.EditName);
+            Click(radioWait);
             Click(btnSaveEdit);
-            IsElementDisplay(Asset.ResultEditName);
         }
         public void DeleteAsset()
         {
             Click(btnDelete);
             Click(btnConfDelete);
-            //IsElementNotDisplay(Asset.ResultEditName);
         }
 
         public void GetCreateAssetPage()

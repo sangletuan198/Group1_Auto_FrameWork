@@ -81,6 +81,7 @@ namespace Scenario_Team1_Auto.PageObject
             SendKey(searchBox, txtStaffCode);
             Click(btnSearch);
             IsElementDisplay(resultStaffcode);
+            Click(delText);
         }
         public void CreateNewUser()
         {
