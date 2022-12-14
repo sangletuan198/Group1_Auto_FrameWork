@@ -14,15 +14,12 @@ namespace Scenario_Team1_Auto.PageObject
         public HomePage(IWebDriver driver) : base(driver)
         {
         }
-        private readonly String titleHome = "//div[text()='Home']";
         private readonly String btnHome = "//a[@href='/home']";
         private readonly String btnHomePage = "//a[@href='/homepage']"; // homepage for staff
-        private readonly String adminAssignList = "//h1[text()='My Assignments']";
 
         private readonly String btnManageUser = "//a[@href='/manage-users']";
         private readonly String btnManageAssets = "//a[contains(text(),'Manage Assets')]";
         private readonly String btnManageAassignments = "//a[@href='/manage-assignments']";
-        private readonly String btnRequestFReturn = "//a[@href='/request-for-returning']";
 
         private readonly String btnChangePassword = "//a[contains(text(),'Change Password')]";         
         private readonly String btnLogout = "//a[contains(text(),'Logout')]";   
@@ -32,11 +29,6 @@ namespace Scenario_Team1_Auto.PageObject
         private readonly String tfOldPassword = "//input[@placeholder='Old Password']";
         private readonly String tfNewPassword = "//input[@placeholder='New Password']";
         private readonly String btnSave = "//button[@type='submit']";
-
-        public void VerifyAdminAssignList()
-        {
-            IsElementDisplay(adminAssignList);
-        }
 
         public void VerifyAdminAccessAuthority()
         {
@@ -53,38 +45,34 @@ namespace Scenario_Team1_Auto.PageObject
         public void ChangePassword(string user,string oldPassword,string newPassword)
         { 
             string locator = "//span[contains(text(),'" + user + "')]";
-            Click(locator);
-            Click(btnChangePassword);
+            Clicks(locator);
+            Clicks(btnChangePassword);
 
             IsElementDisable(btnSave);
 
             SendKey(tfOldPassword, oldPassword);
             SendKey(tfNewPassword, newPassword);
 
-            Click(btnSave);
+            Clicks(btnSave);
         }
         public void Logout(string user)
         {
-            Click("//span[contains(text(),'" + user + "')]");
-            Click(btnLogout);
-            Click(btnConfirmLogout);
+            Clicks("//span[contains(text(),'" + user + "')]");
+            Clicks(btnLogout);
+            Clicks(btnConfirmLogout);
         }
         public void GetAssetPage()
         {
-            Click(btnManageAssets);
+            Clicks(btnManageAssets);
         }
        
         public void GetManageAassignmentsPage()
         {
-            Click(btnManageAassignments);
+            Clicks(btnManageAassignments);
         }
         public void GetManageUserPage()
         {
-            Click(btnManageUser);
-        }
-        public void GetReqForReturn()
-        {
-            Click(btnRequestFReturn);
+            Clicks(btnManageUser);
         }
     }
 }

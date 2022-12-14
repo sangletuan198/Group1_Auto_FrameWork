@@ -13,7 +13,8 @@ using System.Threading.Tasks;
 namespace Scenario_Team1_Auto.Services
 {
     public class CreateUserService
-    {       
+    {
+        
         private string createUserPath = "/api/v1/admin/users";
         public List<UserDAO> testRecord = new List<UserDAO>();
         
