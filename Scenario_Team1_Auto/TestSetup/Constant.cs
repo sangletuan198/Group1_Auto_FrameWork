@@ -10,7 +10,7 @@
 
         public static string NEW_PASSWORD = "87654321";
 
-        public static string STAFF_USERNAME = "sangl";
+        public static string STAFF_USERNAME = "lydtn";
         public static string STAFF_PASSWORD = "12345678";
 
     }

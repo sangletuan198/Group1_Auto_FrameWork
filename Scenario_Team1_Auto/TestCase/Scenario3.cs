@@ -17,10 +17,28 @@ namespace Scenario_Team1_Auto.TestCase
         public void StaffReturnsAsset()
         {
             LoginPage loginPage = new LoginPage(_driver);
-            HomePage homePage = new HomePage(_driver);  
+            HomePage homePage = new HomePage(_driver);
+            ReturnPage returnPage = new ReturnPage(_driver);
 
             loginPage.Login(Constant.STAFF_USERNAME, Constant.STAFF_PASSWORD);
-            homePage.VerifyStaffAccessAuthority();
+           
+
+            homePage.VerifyTickIconEnable();
+            homePage.VerifyXIconEnable();
+            homePage.VerifyReturnIconDisable();
+
+            homePage.StaffAcceptAssignment();
+
+            homePage.VerifyReturnIconEnable();
+            homePage.VefiryTickIconDisable();
+
+            homePage.StaffDeclineAssignment();
+
+            homePage.StaffReturnAssignent();
+
+            homePage.GetAssetCodeAndAcceptReturningRequest();
+
+            homePage.Logout(Constant.ADMIN_USERNAME);
         }
     }
 }

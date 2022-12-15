@@ -62,6 +62,7 @@ namespace CoreFramework.DriverCore
                 WaitForElementToBeClickable(driver, e);
                 highlightElement(e);
                 e.Click();
+                Thread.Sleep(500);
                 TestContext.WriteLine("click into element" + e.ToString() + "passed");
                 HtmlReport.Pass("click into element" + e.ToString() + "passed");
             }
@@ -81,6 +82,7 @@ namespace CoreFramework.DriverCore
                 IWebElement e = FindElementByXpath(locator);
                 WaitForElementToBeClickable(driver, e);
                 FindElementByXpath(locator).Click();
+                Thread.Sleep(500);
                 TestContext.WriteLine("click into element" + locator.ToString() + "passed");
                 HtmlReport.Pass("click into element" + locator.ToString() + "passed");
             }
@@ -102,6 +104,7 @@ namespace CoreFramework.DriverCore
                 FindElementByXpath(locator).SendKeys(key);
                 TestContext.WriteLine("SendKey into element " + locator.ToString() + "passed");
                 HtmlReport.Pass("senkey into element" + locator.ToString() + "passed");
+                
             }
             catch (Exception ex)
             {
@@ -130,9 +133,12 @@ namespace CoreFramework.DriverCore
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOut));
             return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(locator)));
         }
-       
 
-        
+        public void RefreshPage()
+        {
+            driver.Navigate().Refresh();
+        }
+
         public bool IsElementDisplay(string locator)
         {
             try
@@ -182,6 +188,10 @@ namespace CoreFramework.DriverCore
             {
                 return true;
             }
+        }
+        public string GetText(string locator)
+        {
+            return FindElementByXpath(locator).Text;
         }
     }
 }
