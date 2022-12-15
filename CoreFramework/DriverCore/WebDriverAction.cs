@@ -90,7 +90,7 @@ namespace CoreFramework.DriverCore
         {
             try
             {
-                WaitForElementExists(driver, locator);  
+                Thread.Sleep(2000);  
                 IWebElement e = driver.FindElement(ByXpath(locator));
                 
                 TestContext.WriteLine("Find element" + locator.ToString() + "passed");
@@ -134,12 +134,11 @@ namespace CoreFramework.DriverCore
             }
         }
 
-        public void Clicks(string locator)
+        public void Click(string locator)
         {
             try
             {
-                WaitForElementExists(driver, locator);
-                WaitForElementToBeClickable(driver, locator);
+                Thread.Sleep(2000);
                 FindElementByXpath(locator).Click();
                 TestContext.WriteLine("click into element" + locator.ToString() + "passed");
                 HtmlReport.Pass("click into element" + locator.ToString() + "passed");
@@ -157,7 +156,7 @@ namespace CoreFramework.DriverCore
         {
             try
             {
-                WaitForElementExists(driver, locator);
+                Thread.Sleep(2000);
                 FindElementByXpath(locator).SendKeys(key);
                 TestContext.WriteLine("SendKey into element " + locator.ToString() + "passed");
                 HtmlReport.Pass("senkey into element" + locator.ToString() + "passed");
@@ -185,6 +184,26 @@ namespace CoreFramework.DriverCore
                 HtmlReport.Fail("Replace" + locator.ToString() + "to" + key.ToString() + "failed", TakeScreenShot());
                 throw ex;
             }
+        }
+        public void RemoveReadonlyAndSendKeys(string locator, string key)
+        {
+            try
+            {
+                Click(locator);
+                IJavaScriptExecutor jse = (IJavaScriptExecutor)driver;
+                jse.ExecuteScript("arguments[0].removeAttribute('readonly')", WaitForElementToBeClickable(driver, locator, 5));
+                //driver.execute_script("arguments[0].removeAttribute('readonly')", WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "//input[@class='ivu-input' and @placeholder='Select Date and Time']"))))
+                SendKey(locator, key);
+                SendKey(locator, Keys.Enter);
+                TestContext.WriteLine("Remove and sendkey into " + locator + " successfully");
+                HtmlReport.Pass("Remove and sendkey into " + locator + " successfully");
+            }
+            catch
+            {
+                TestContext.WriteLine("Fail to remove and sendkey " + key + " into " + locator);
+                HtmlReport.Fail("Fail to remove and sendkey " + key + " into " + locator, TakeScreenShot());
+            }
+
         }
 
         public void Back()

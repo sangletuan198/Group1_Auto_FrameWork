@@ -8,22 +8,19 @@ namespace Scenario_Team1_Auto.DAO
 {
     public class UserDAO
     {
+        public string staffCode { get; set; }
+        public string username { get; set; }
         public string birthDate { get; set; }
-        public string createdAt { get; set; }
-        public string firstName { get; set; }
-        public string gender { get; set; }
-        public string lastName { get; set; }
-        public string role { get; set; }
+        public string active { get; set; }
 
-        public UserDAO(string birthDate, string createdAt, string firstName, string gender, string lastName, string role)
+
+        public UserDAO(string staffCode, string username, string birthDate, string active)
         {
+            this.staffCode = staffCode;
+            this.username = username;
             this.birthDate = birthDate;
-            this.createdAt = createdAt;
-            this.firstName = firstName;
-            this.gender = gender;
-            this.lastName = lastName;
-            this.role = role;
-        }
+            this.active = active;
 
+        }
     }
 }

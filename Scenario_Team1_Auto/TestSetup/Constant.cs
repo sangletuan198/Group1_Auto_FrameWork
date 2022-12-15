@@ -2,8 +2,8 @@
 {
     public class Constant  
     {
-        public static string BASE_URL = "http://13.212.23.86";
-        public static string BASE_HOST = "http://13.212.23.86";
+        public static string BASE_URL = "http://18.141.229.145";
+        public static string BASE_HOST = "http://18.141.229.145";
 
         public static string STAFF_USERNAME = "quynhct";
         public static string STAFF_PASSWORD = "quynhct@01011990";
