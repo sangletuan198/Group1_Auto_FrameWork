@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using Scenario_Team1_Auto.TestSetup;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,14 +42,17 @@ namespace Scenario_Team1_Auto.PageObject
         private readonly String waitingForAcceptTickIcon = "//td[contains(text(),'Waiting For Acceptance')]//following::td[1]//span[@aria-label='check']";
 
         private readonly String waitingForAcceptXIcon = "//td[contains(text(),'Waiting For Acceptance')]//following::td[1]//span[@aria-label='close-circle']";
-        private readonly String returnIcon = "//tbody/tr[1]//span[@aria-label='reload']";
+
+
+        private readonly String returnIcon = "//td[contains(text(),'Accepted')]//following::td[1]//button[not(@disabled)]//span[@aria-label='reload']";
+        private readonly String assetCodeOfReturn = "//ancestor::tr//td[1]";
 
         private readonly String waitingForAcceptReturnIcon = "//td[contains(text(),'Waiting For Acceptance')]//following::td[1]//span[@aria-label='reload']";
         private readonly String acceptedReturnIcon = "//td[contains(text(),'Accepted')]//following::td[1]//span[@aria-label='reload']";
 
         private readonly String btnAccept = "//span[contains(text(),'Accept')]";
         private readonly String btnDecline = "//span[text()='Decline']";
-        private readonly String btnYes = "//span[contains(text(),'Y')]";
+        private readonly String btnYes = "//span[text()='Yes']";
 
 
 
@@ -123,13 +127,7 @@ namespace Scenario_Team1_Auto.PageObject
           
         }
 
-        public void StaffReturnAssignent()
-        {
-            Click(returnIcon);
-            Click(btnYes);
-          
-        }
-
+       
         public void Logout(string user)
         {
             string cfgUser = "//span[contains(text(),'" + user + "')]";
@@ -158,41 +156,81 @@ namespace Scenario_Team1_Auto.PageObject
             Click(btnRequestForReturning);
         }
 
-
-        public IList<IWebElement> GetList(string button)
+        public string StaffReturnAssignent()
         {
-            IList<IWebElement> randomButton = FindElementsByXpath(button);
+            Click(returnIcon);
+            string assetCode = GetText(returnIcon + assetCodeOfReturn);
+            Thread.Sleep(500);
+            Click(btnYes);
+            return assetCode;
+        }
+
+        public IList<IWebElement> GetList(string xpath)
+        {
+            IList<IWebElement> randomButton = FindElementsByXpath(xpath);
             return randomButton;
         }
-        public void ClickOnRandomButton(string button)
+        
+        public IWebElement ClickOnRandomButton(string xpath)
         {
 
-            IList<IWebElement> randomButton = GetList(button);
+            IList<IWebElement> randomButton = GetList(xpath);
             foreach (var buttons in randomButton)
             {
                 Console.WriteLine(buttons.Text);
             }
             var random = new Random();
             int index = random.Next(randomButton.Count);
-            Click(randomButton[index]);
+            ClickReturnButtonAndGetAssetCode(0);
             Console.WriteLine(randomButton[index].Text);
+            return randomButton[index];
 
         }
+
         public void GetAssetCodeAndAcceptReturningRequest()
         {
             LoginPage loginPage = new LoginPage(driver);
             HomePage homePage = new HomePage(driver);
             ReturnPage returnPage = new ReturnPage(driver);
 
-            string assetCode = GetText(firstAsset);
+            string assetCode = StaffReturnAssignent();
             Logout(Constant.STAFF_USERNAME);
             loginPage.Login(Constant.ADMIN_USERNAME, Constant.ADMIN_PASSWORD);
             homePage.GetRequestForReturningPage();
             returnPage.SearchByStateWaitingAndAssetCode(assetCode);
             returnPage.AdminConfirmReturn();
            
+
+        }
+        public IList<IWebElement> GetValidRow()
+        {
+            return FindElementsByXpath("//td[contains(text(),'Accepted')]//following::td[1]//button[not(@disabled)]//ancestor::tr");
+        }
+        public IList<IWebElement> FindChildOfRow(IWebElement row)
+        {
+            IList<IWebElement> cells = row.FindElements(ByXpath("//*"));
+            return cells;
+        }
+        public string GetAssetCode(IList<IWebElement> cells)
+        {
+            return cells[0].Text;
         }
 
+        public IWebElement GetReturnButtonOfCell(IWebElement cell)
+        {
+            return cell.FindElement(ByXpath("//span[@aria-label='reload']"));
+        }
+        public void ClickReturnButtonAndGetAssetCode(int index)
+        {
+            var rows = GetValidRow();
+            var row = rows[index];
+            var cell = FindChildOfRow(row);
+            var assetCode = GetAssetCode(cell);
+            var returnButton = GetReturnButtonOfCell(cell[4]);
+
+            Click(returnButton);
+
+        }
     }
 
 }

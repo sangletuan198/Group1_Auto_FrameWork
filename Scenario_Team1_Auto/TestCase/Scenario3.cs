@@ -21,7 +21,7 @@ namespace Scenario_Team1_Auto.TestCase
             ReturnPage returnPage = new ReturnPage(_driver);
 
             loginPage.Login(Constant.STAFF_USERNAME, Constant.STAFF_PASSWORD);
-           
+
 
             homePage.VerifyTickIconEnable();
             homePage.VerifyXIconEnable();
@@ -34,9 +34,11 @@ namespace Scenario_Team1_Auto.TestCase
 
             homePage.StaffDeclineAssignment();
 
-            homePage.StaffReturnAssignent();
-
             homePage.GetAssetCodeAndAcceptReturningRequest();
+
+
+
+
 
             homePage.Logout(Constant.ADMIN_USERNAME);
         }
