@@ -14,7 +14,7 @@ namespace Scenario_Team1_Auto.TestCase
     public class Scenario_2 : NUnitWebTestSetup
     {
         [Test]
-        public void AdminManageAssignment_1() // admin view Aassignments Page, Assignments List and detail of Aassignments
+        public void Scenario_2() // admin view Aassignments Page, Assignments List and detail of Aassignments
         {
             LoginPage loginPage = new LoginPage(_driver);
             HomePage homePage = new HomePage(_driver);
@@ -49,116 +49,88 @@ namespace Scenario_Team1_Auto.TestCase
             manageAssignmentsPage.VerifyCreateNewAssignmentPageDisplay();
             manageAssignmentsPage.CreateNewAssignment();                         // 3 asset
 
-            //homePage.Logout(userName);
-        }
-
-        [Test]
-        public void MemberControlAssignment_2_3()
-        {
-            LoginPage loginPage = new LoginPage(_driver);
-            HomePage homePage = new HomePage(_driver);
-
-            ManageAssignmentsPage manageAssignmentsPage = new ManageAssignmentsPage(_driver);
+            homePage.Logout(userName);
+        
             //Member accept/decline assign 
-            string stafuserName = Constant.STAFF_USERNAME;
-            string stafpassword = Constant.STAFF_PASSWORD;
+            string stafuserName = Constant.STAFF_USERNAME1;
+            string stafpassword = Constant.STAFF_PASSWORD1;
 
             loginPage.Login(stafuserName, stafpassword);
 
             homePage.StaffAcptAssignment();
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
             homePage.StaffDeclineAssignment();
 
-            //Staff return assign
-            homePage.StaffReturnAssignment();
             homePage.Logout(stafuserName);
-        }
-
-        [Test]  
-        public void AdminManageRequestForReturn_4_5_6()
-        {
-            LoginPage loginPage = new LoginPage(_driver);
-            HomePage homePage = new HomePage(_driver);
-            RequestForReturningPage returnRequestPage = new RequestForReturningPage(_driver);
-
-            string userName = Constant.ADMIN_USERNAME;
-            string password = Constant.ADMIN_PASSWORD;
-
-            //Admin manage request for returning / 2.4
+        
+            //Admin export report
             loginPage.Login(userName, password);
-            homePage.GetReqForReturnPage();
-            returnRequestPage.VerifyReturnPageDisplay();
-
-            returnRequestPage.ReturnPageSearchByStateWaiting();
-            Thread.Sleep(1000);
-            returnRequestPage.AdminConfirmReturn();
 
             ReportPage reportPage = new ReportPage(_driver);
-            //2.5 2.6
             homePage.GetReportPage();
             reportPage.VerifyReportPageDisplay();
             reportPage.ExportReport();
             //homePage.Logout(userName);
         }
 
-        [Test]
-        public void AdminCreateReturnRequest_2_2_2() // admin view Aassignments Page, Assignments List and detail of Aassignments
-        {
-            LoginPage loginPage = new LoginPage(_driver);
-            HomePage homePage = new HomePage(_driver);
+        //[Test]
+        //public void AdminCreateReturnRequest_2_2_2() // admin view Aassignments Page, Assignments List and detail of Aassignments
+        //{
+        //    LoginPage loginPage = new LoginPage(_driver);
+        //    HomePage homePage = new HomePage(_driver);
 
-            ManageAssignmentsPage manageAssignmentsPage = new ManageAssignmentsPage(_driver);
+        //    ManageAssignmentsPage manageAssignmentsPage = new ManageAssignmentsPage(_driver);
 
-            //Admin manage assignment
-            string userName = Constant.ADMIN_USERNAME;
-            string password = Constant.ADMIN_PASSWORD;
+        //    //Admin manage assignment
+        //    string userName = Constant.ADMIN_USERNAME;
+        //    string password = Constant.ADMIN_PASSWORD;
 
-            loginPage.Login(userName, password);
+        //    loginPage.Login(userName, password);
 
-            homePage.GetManageAassignmentsPage();
-            manageAssignmentsPage.VerifyManageAssignmentsPageDisplay();
-            manageAssignmentsPage.GetAssignmentList();                      //1. Admin view assignment list.
-            manageAssignmentsPage.GetDetailOfRandomAssignment();
-            manageAssignmentsPage.VerifyAssignmentPopupDisplay();
-            manageAssignmentsPage.ClosePopUpDetailAssign();
+        //    homePage.GetManageAassignmentsPage();
+        //    manageAssignmentsPage.VerifyManageAssignmentsPageDisplay();
+        //    manageAssignmentsPage.GetAssignmentList();                      //1. Admin view assignment list.
+        //    manageAssignmentsPage.GetDetailOfRandomAssignment();
+        //    manageAssignmentsPage.VerifyAssignmentPopupDisplay();
+        //    manageAssignmentsPage.ClosePopUpDetailAssign();
 
-            // Admin create new assignment
-            manageAssignmentsPage.GetCreateNewAssignmentsPage();                // 1 asset
-            manageAssignmentsPage.VerifyCreateNewAssignmentPageDisplay();
-            manageAssignmentsPage.CreateNewAssignment();
+        //    // Admin create new assignment
+        //    manageAssignmentsPage.GetCreateNewAssignmentsPage();                // 1 asset
+        //    manageAssignmentsPage.VerifyCreateNewAssignmentPageDisplay();
+        //    manageAssignmentsPage.CreateNewAssignment();
 
-            homePage.Logout(userName);
+        //    homePage.Logout(userName);
 
-            //Member accept assign
-            string stafuserName = Constant.STAFF_USERNAME;
-            string stafpassword = Constant.STAFF_PASSWORD;
+        //    //Member accept assign
+        //    string stafuserName = Constant.STAFF_USERNAME;
+        //    string stafpassword = Constant.STAFF_PASSWORD;
 
-            loginPage.Login(stafuserName, stafpassword);
+        //    loginPage.Login(stafuserName, stafpassword);
 
-            homePage.StaffAcptAssignment();
-            homePage.Logout(stafuserName);
+        //    homePage.StaffAcptAssignment();
+        //    homePage.Logout(stafuserName);
 
-            //admin create request for return assign
-            RequestForReturningPage returnRequestPage = new RequestForReturningPage(_driver);
+        //    //admin create request for return assign
+        //    RequestForReturningPage returnRequestPage = new RequestForReturningPage(_driver);
 
-            loginPage.Login(userName, password);
+        //    loginPage.Login(userName, password);
 
-            homePage.GetManageAassignmentsPage();
-            manageAssignmentsPage.VerifyManageAssignmentsPageDisplay();
-            manageAssignmentsPage.SortByStateAcpt();
-            manageAssignmentsPage.AdminCreateReturnAssYes();
+        //    homePage.GetManageAassignmentsPage();
+        //    manageAssignmentsPage.VerifyManageAssignmentsPageDisplay();
+        //    manageAssignmentsPage.SortByStateAcpt();
+        //    manageAssignmentsPage.AdminCreateReturnAssYes();
 
-            homePage.GetReqForReturnPage();
-            returnRequestPage.VerifyReturnPageDisplay();
-            returnRequestPage.ReturnPageSearchByStateWaiting();
-            returnRequestPage.AdminConfirmReturn();
+        //    homePage.GetReqForReturnPage();
+        //    returnRequestPage.VerifyReturnPageDisplay();
+        //    returnRequestPage.ReturnPageSearchByStateWaiting();
+        //    returnRequestPage.AdminConfirmReturn();
 
-            ReportPage reportPage = new ReportPage(_driver);
+        //    ReportPage reportPage = new ReportPage(_driver);
 
-            homePage.GetReportPage();
-            reportPage.VerifyReportPageDisplay();
-            reportPage.ExportReport();
-            //homePage.Logout(userName);
-        }
+        //    homePage.GetReportPage();
+        //    reportPage.VerifyReportPageDisplay();
+        //    reportPage.ExportReport();
+        //    //homePage.Logout(userName);
+        //}
     }
 }

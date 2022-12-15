@@ -33,7 +33,7 @@ namespace Scenario_Team1_Auto.PageObject
         private readonly String tfNewPassword = "//input[@placeholder='New Password']";
         private readonly String btnSave = "//button[@type='submit']";
 
-        private readonly String btnStaffAcptAss = "//button[@class='ant-btn ant-btn-default' and not(@disabled)][span[@class='anticon anticon-check']]";
+        private readonly String btnStaffAcptAss = "//button[@class='ant-btn ant-btn-default tick-icon' and not(@disabled)][span[@class='anticon anticon-check']]";
         private readonly String btnStaffConfirmAcpt = "//span[text()='Accept']";
         private readonly String btnStaffCancelConfirmAcpt = "//span[text()='Cancel']";
         private readonly String btnStaffDeclineAss = "//button[@class='ant-btn ant-btn-default' and not(@disabled)]//span[@class='anticon anticon-close-circle']";

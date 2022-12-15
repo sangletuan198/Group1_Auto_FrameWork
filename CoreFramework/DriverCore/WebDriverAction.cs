@@ -138,7 +138,7 @@ namespace CoreFramework.DriverCore
         {
             try
             {
-                Thread.Sleep(2000);
+                Thread.Sleep(1000);
                 FindElementByXpath(locator).Click();
                 TestContext.WriteLine("click into element" + locator.ToString() + "passed");
                 HtmlReport.Pass("click into element" + locator.ToString() + "passed");

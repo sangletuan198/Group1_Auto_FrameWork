@@ -8,6 +8,9 @@
         public static string STAFF_USERNAME = "quynhct";
         public static string STAFF_PASSWORD = "quynhct@01011990";
 
+        public static string STAFF_USERNAME1 = "tuandv";
+        public static string STAFF_PASSWORD1 = "tuandv@01011990";
+
         public static string ADMIN_USERNAME = "vangdv";
         public static string ADMIN_PASSWORD = "vangdv@01011990";
         public static string NEW_PASSWORD = "87654321";
