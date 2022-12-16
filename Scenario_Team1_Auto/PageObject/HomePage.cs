@@ -54,14 +54,15 @@ namespace Scenario_Team1_Auto.PageObject
         private readonly String waitingForAcceptTickIcon = "//td[contains(text(),'Waiting For Acceptance')]//following::td[1]//span[@aria-label='check']";
 
         private readonly String waitingForAcceptXIcon = "//td[contains(text(),'Waiting For Acceptance')]//following::td[1]//span[@aria-label='close-circle']";
-        private readonly String returnIcon = "//tbody/tr[1]//span[@aria-label='reload']";
+        private readonly String returnIcon = "//td[contains(text(),'Accepted')]//following::td[1]//button[not(@disabled)]//span[@aria-label='reload']";
+        private readonly String assetCodeOfReturn = "//ancestor::tr//td[1]";
 
         private readonly String waitingForAcceptReturnIcon = "//td[contains(text(),'Waiting For Acceptance')]//following::td[1]//span[@aria-label='reload']";
         private readonly String acceptedReturnIcon = "//td[contains(text(),'Accepted')]//following::td[1]//span[@aria-label='reload']";
 
         private readonly String btnAccept = "//span[contains(text(),'Accept')]";
         private readonly String btnDecline = "//span[text()='Decline']";
-        private readonly String btnYes = "//span[contains(text(),'Y')]";
+        private readonly String btnYes = "//span[text()='Yes']";
 
         public void VerifyAdminAssignList()
         {
@@ -190,10 +191,13 @@ namespace Scenario_Team1_Auto.PageObject
 
         }
 
-        public void StaffReturnAssignent()
+        public string StaffReturnAssignent()
         {
             Click(returnIcon);
+            string assetCode = GetText(returnIcon + assetCodeOfReturn);
+            Thread.Sleep(500);
             Click(btnYes);
+            return assetCode;
 
         }
 
@@ -237,8 +241,8 @@ namespace Scenario_Team1_Auto.PageObject
             HomePage homePage = new HomePage(driver);
             ReturnPage returnPage = new ReturnPage(driver);
 
-            string assetCode = GetText(firstAsset);
-            Logout(Constant.STAFF_USERNAME);
+            string assetCode = StaffReturnAssignent();
+            Logout(Constant.STAFF_USERNAME2);
             loginPage.Login(Constant.ADMIN_USERNAME, Constant.ADMIN_PASSWORD);
             homePage.GetRequestForReturningPage();
             returnPage.SearchByStateWaitingAndAssetCode(assetCode);

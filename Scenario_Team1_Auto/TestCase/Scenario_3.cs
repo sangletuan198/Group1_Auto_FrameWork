@@ -5,16 +5,16 @@ using Scenario_Team1_Auto.TestSetup;
 namespace Scenario_Team1_Auto.TestCase
 {
     [TestFixture]
-    public class Scenario3 : NashNUnitAPITestSetup
+    public class Scenario_3 : NashNUnitAPITestSetup
     {
         [Test]
-        public void StaffReturnsAsset()
+        public void Scenario3()
         {
             LoginPage loginPage = new LoginPage(_driver);
             HomePage homePage = new HomePage(_driver);
             ReturnPage returnPage = new ReturnPage(_driver);
 
-            loginPage.Login(Constant.STAFF_USERNAME, Constant.STAFF_PASSWORD);
+            loginPage.Login(Constant.STAFF_USERNAME2, Constant.STAFF_PASSWORD2);
            
 
             homePage.VerifyTickIconEnable();
@@ -27,8 +27,6 @@ namespace Scenario_Team1_Auto.TestCase
             homePage.VefiryTickIconDisable();
 
             homePage.StaffDeclineAssignment();
-
-            homePage.StaffReturnAssignent();
 
             homePage.GetAssetCodeAndAcceptReturningRequest();
 

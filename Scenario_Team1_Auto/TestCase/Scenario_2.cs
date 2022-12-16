@@ -14,7 +14,7 @@ namespace Scenario_Team1_Auto.TestCase
     public class Scenario_2 : NUnitWebTestSetup
     {
         [Test]
-        public void Scenario_2() // admin view Aassignments Page, Assignments List and detail of Aassignments
+        public void Scenario2() // admin view Aassignments Page, Assignments List and detail of Aassignments
         {
             LoginPage loginPage = new LoginPage(_driver);
             HomePage homePage = new HomePage(_driver);

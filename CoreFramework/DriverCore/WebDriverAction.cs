@@ -90,7 +90,7 @@ namespace CoreFramework.DriverCore
         {
             try
             {
-                Thread.Sleep(2000);  
+               
                 IWebElement e = driver.FindElement(ByXpath(locator));
                 
                 TestContext.WriteLine("Find element" + locator.ToString() + "passed");
@@ -125,6 +125,7 @@ namespace CoreFramework.DriverCore
                 e.Click();
                 TestContext.WriteLine("click into element" + e.ToString() + "passed");
                 HtmlReport.Pass("click into element" + e.ToString() + "passed");
+                Thread.Sleep(500);
             }
             catch (Exception ex)
             {
@@ -138,10 +139,11 @@ namespace CoreFramework.DriverCore
         {
             try
             {
-                Thread.Sleep(1000);
+               
                 FindElementByXpath(locator).Click();
                 TestContext.WriteLine("click into element" + locator.ToString() + "passed");
                 HtmlReport.Pass("click into element" + locator.ToString() + "passed");
+                Thread.Sleep(500);
             }
             catch (Exception ex)
             {
@@ -156,7 +158,7 @@ namespace CoreFramework.DriverCore
         {
             try
             {
-                Thread.Sleep(2000);
+                
                 FindElementByXpath(locator).SendKeys(key);
                 TestContext.WriteLine("SendKey into element " + locator.ToString() + "passed");
                 HtmlReport.Pass("senkey into element" + locator.ToString() + "passed");
