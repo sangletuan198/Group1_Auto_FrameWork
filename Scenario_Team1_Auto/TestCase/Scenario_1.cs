@@ -23,8 +23,8 @@ namespace Scenario_Team1_Auto.TestCase
             ManageAssignmentsPage manageAssignment = new ManageAssignmentsPage(_driver);
           
             login.Login(Constant.ADMIN_USERNAME, Constant.ADMIN_PASSWORD);
-            string title = _driver.Url;
-            Assert.AreEqual("http://18.141.229.145/home", title);
+            homePage.VerifyAdminAccessAuthority();
+
             homePage.VerifyAdminAssignList();
            
             homePage.GetManageUserPage();
