@@ -41,7 +41,7 @@ namespace Scenario_Team1_Auto.PageObject
         {
             IsElementDisplay(findByState);
             //ClickAndSelect(findByType, typeAdmin);
-            Thread.Sleep(2000);
+            
             Click(findByState);
             Click(stateComplete);
             IsElementNotDisplay("WAITING_FOR_RETURNING");

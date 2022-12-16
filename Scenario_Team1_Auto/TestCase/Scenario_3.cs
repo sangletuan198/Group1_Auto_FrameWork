@@ -16,14 +16,16 @@ namespace Scenario_Team1_Auto.TestCase
 
             loginPage.Login(Constant.STAFF_USERNAME2, Constant.STAFF_PASSWORD2);
            
-
             homePage.VerifyTickIconEnable();
+
             homePage.VerifyXIconEnable();
+
             homePage.VerifyReturnIconDisable();
 
             homePage.StaffAcceptAssignment();
 
             homePage.VerifyReturnIconEnable();
+
             homePage.VefiryTickIconDisable();
 
             homePage.StaffDeclineAssignment();

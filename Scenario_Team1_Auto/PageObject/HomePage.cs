@@ -128,12 +128,6 @@ namespace Scenario_Team1_Auto.PageObject
             Click(btnStaffCancelConfirmAcpt);
         }
 
-        /*public void StaffDeclineAssignment()
-        {
-            Click(btnStaffDeclineAss);
-            Click(btnStaffConfirmDecline);
-        }*/
-
         public void StaffCancelDeclineAssignment()
         {
             Click(btnStaffDeclineAss);

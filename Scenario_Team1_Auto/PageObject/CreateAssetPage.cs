@@ -6,16 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scenario_Team1_Auto.PageObject.ManageAsset
+namespace Scenario_Team1_Auto.PageObject
 {
     public class CreateAssetPage : WebDriverAction
     {
         public CreateAssetPage(IWebDriver driver) : base(driver)
         {
         }
-        private readonly String tfAssetName = "//input[@placeholder='Asset Name']";
-        private readonly String dlCategory = " //input[@id='create-new-asset_category']";
-        private readonly String tfSpecifications = " //textarea[@placeholder='Specifications']";
+        private readonly string tfAssetName = "//input[@placeholder='Asset Name']";
+        private readonly string dlCategory = " //input[@id='create-new-asset_category']";
+        private readonly string tfSpecifications = " //textarea[@placeholder='Specifications']";
     }
 
 }

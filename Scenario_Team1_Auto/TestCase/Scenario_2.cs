@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using RookiesTest.TestSetup;
+
 using Scenario_Team1_Auto.PageObject;
 using Scenario_Team1_Auto.TestSetup;
 using System;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Scenario_Team1_Auto.TestCase
 {
     [TestFixture]
-    public class Scenario_2 : NUnitWebTestSetup
+    public class Scenario_2 : NashNUnitAPITestSetup
     {
         [Test]
         public void Scenario2() // admin view Aassignments Page, Assignments List and detail of Aassignments

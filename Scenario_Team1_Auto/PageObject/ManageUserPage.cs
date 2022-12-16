@@ -90,15 +90,15 @@ namespace Scenario_Team1_Auto.PageObject
             SendKey(inputLastName, User.LastName);
             Click(genderMale);
             Click(selectType);
-            Thread.Sleep(2000);
+         
             Click(selectTypeStaff);
             Click(inputJoinDate);
-            Thread.Sleep(2000);
+            
             Click(joinToday);
-            Thread.Sleep(2000);
+           
             RemoveReadonlyAndSendKeys(inputDOB, User.DoB);
             IsElementEnable(btnSave);
-            Thread.Sleep(2000);
+            
             Click(btnSave);
             IsElementDisplay("//td[text()='Tu Nguyen']");
         }
@@ -113,7 +113,7 @@ namespace Scenario_Team1_Auto.PageObject
             IsElementDisplay(btnEdit);
             Click(btnEdit);
             Click(selectType);
-            Thread.Sleep(2000);
+            
             Click(selectTypeAdmin);
             IsElementDisplay(btnSaveEdit);
             Click(btnSaveEdit);
@@ -121,10 +121,10 @@ namespace Scenario_Team1_Auto.PageObject
         public void DeleteUser()
         {
             IsElementDisplay(btnDelete);
-            Thread.Sleep(2000);
+            
             Click(btnDelete);
             IsElementDisplay(btnConfirmDel);
-            Thread.Sleep(2000);
+            
             Click(btnConfirmDel);
             //IsElementNotDisplay("//td[text()='Tu Nguyen']");
         }
